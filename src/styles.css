@@ -42,3 +42,9 @@ body > main > nav > nav {
    flex-flow: column;
    gap: 12px;
 }
+
+body > main > div.tasks {
+   padding: 24px;
+   display: grid;
+   flex: 1;
+}

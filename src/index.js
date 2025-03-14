@@ -5,6 +5,8 @@ import Task from "./task";
 import ProjectsRenderer from "./ProjectsRenderer";
 import TasksRenderer from "./TasksRenderer";
 
+const TASK_RESIZE_RENDER_DELAY = 50; // delay to render tasks after resizing
+
 const projectsElement = document.querySelector("body > main > nav > ul")
 const projectsRenderer = new ProjectsRenderer(projectsElement);
 
@@ -31,3 +33,15 @@ const projects = new Array();
 projects.push(defaultProject);
 
 projectsRenderer.render(projects);
+
+let taskHideTimeout;
+
+window.addEventListener("resize", event => {
+   tasksElement.classList.add("hidden");
+   
+   clearTimeout(taskHideTimeout);
+
+   taskHideTimeout = setTimeout(() => {
+      tasksElement.classList.remove("hidden");
+   }, TASK_RESIZE_RENDER_DELAY);
+});

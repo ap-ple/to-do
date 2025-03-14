@@ -80,6 +80,12 @@ body > main > ul.tasks {
    grid-template: var(--task-layout) / var(--task-layout);
    justify-content: space-evenly;
    flex: 1;
+   transition: opacity 200ms;
+}
+
+body > main > ul.tasks.hidden {
+   transition: opacity 10ms;
+   opacity: 0%;
 }
 
 body > main > ul.tasks > * {

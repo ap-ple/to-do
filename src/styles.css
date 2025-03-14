@@ -55,7 +55,7 @@ body > main > div.tasks {
    flex: 1;
 }
 
-body > main > div.tasks > div {
+body > main > div.tasks > * {
    --task-padding: 24px;
    --task-border-size: 1px;
    border: solid var(--theme-border) var(--task-border-size);

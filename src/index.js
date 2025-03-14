@@ -36,7 +36,7 @@ projectsRenderer.render(projects);
 
 let taskHideTimeout;
 
-window.addEventListener("resize", event => {
+window.addEventListener("resize", () => {
    tasksElement.classList.add("hidden");
    
    clearTimeout(taskHideTimeout);

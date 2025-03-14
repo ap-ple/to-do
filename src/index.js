@@ -5,7 +5,7 @@ import Task from "./task";
 import ProjectsRenderer from "./ProjectsRenderer";
 import TasksRenderer from "./TasksRenderer";
 
-const projectsElement = document.querySelector("body > main > nav > nav")
+const projectsElement = document.querySelector("body > main > nav > ul")
 const projectsRenderer = new ProjectsRenderer(projectsElement);
 
 const tasksElement = document.querySelector("body > main > ul.tasks")

@@ -3,6 +3,7 @@
    --theme-header: lightgray;
    --theme-sidebar: rgb(235, 235, 235);
    --theme-border: black;
+   --theme-selected: rgb(50, 50, 200);
 }
 
 * {
@@ -42,6 +43,28 @@ body > main > nav > nav {
    display: flex;
    flex-flow: column;
    gap: 12px;
+}
+
+body > main > nav > nav > button {
+   text-align: start;
+   border: none;
+   background: none;
+   cursor: pointer;
+   color: rgb(120, 120, 120);
+   padding: 8px;
+   padding-left: 16px;
+   border-radius: 16px;
+   font-size: 110%;
+   transition: color 0.15s, background-color 0.15s;
+}
+
+body > main > nav > nav > button:hover {
+   color: black;
+}
+
+body > main > nav > nav > button[data-selected] {
+   color: white;
+   background: var(--theme-selected);
 }
 
 body > main > div.tasks {

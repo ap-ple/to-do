@@ -45,7 +45,21 @@ body > main > nav > nav {
 }
 
 body > main > div.tasks {
+   --task-size: 200px;
+   --task-layout: repeat(auto-fill, var(--task-size));
    padding: 24px;
+   gap: 24px;
    display: grid;
+   grid-template: var(--task-layout) / var(--task-layout);
+   justify-content: space-evenly;
    flex: 1;
+}
+
+body > main > div.tasks > div {
+   --task-padding: 24px;
+   --task-border-size: 1px;
+   border: solid var(--theme-border) var(--task-border-size);
+   height: calc(var(--task-size) - var(--task-padding) * 2 - var(--task-border-size));
+   padding: var(--task-padding);
+   border-radius: 24px;
 }

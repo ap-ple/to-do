@@ -85,4 +85,5 @@ body > main > div.tasks > * {
    height: calc(var(--task-size) - var(--task-padding) * 2 - var(--task-border-size));
    padding: var(--task-padding);
    border-radius: 24px;
+   overflow: auto;
 }

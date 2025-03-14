@@ -55,7 +55,7 @@ body > main > nav > ul > button {
    padding-left: 16px;
    border-radius: 16px;
    font-size: 110%;
-   transition: color 0.15s, background-color 0.15s;
+   transition: color 0.15s, background-color 0.15s, box-shadow 0.15s;
 }
 
 body > main > nav > ul > button:hover {
@@ -65,6 +65,10 @@ body > main > nav > ul > button:hover {
 body > main > nav > ul > button[data-selected] {
    color: white;
    background: var(--theme-selected);
+}
+
+body > main > nav > ul > button[data-selected]:hover {
+   box-shadow: 0 0 6px 0 var(--theme-selected);
 }
 
 body > main > ul.tasks {

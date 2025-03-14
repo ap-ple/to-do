@@ -67,7 +67,7 @@ body > main > nav > nav > button[data-selected] {
    background: var(--theme-selected);
 }
 
-body > main > div.tasks {
+body > main > ul.tasks {
    --task-size: 200px;
    --task-layout: repeat(auto-fill, var(--task-size));
    padding: 24px;
@@ -78,7 +78,7 @@ body > main > div.tasks {
    flex: 1;
 }
 
-body > main > div.tasks > * {
+body > main > ul.tasks > * {
    --task-padding: 24px;
    --task-border-size: 1px;
    border: solid var(--theme-border) var(--task-border-size);

@@ -8,7 +8,7 @@ import TasksRenderer from "./TasksRenderer";
 const projectsElement = document.querySelector("body > main > nav > nav")
 const projectsRenderer = new ProjectsRenderer(projectsElement);
 
-const tasksElement = document.querySelector("body > main > .tasks")
+const tasksElement = document.querySelector("body > main > ul.tasks")
 const tasksRenderer = new TasksRenderer(tasksElement)
 
 const defaultProject = new Project("Default", tasksRenderer);

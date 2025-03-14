@@ -62,12 +62,12 @@ body > main > nav > ul > button:hover {
    color: black;
 }
 
-body > main > nav > ul > button[data-selected] {
+body > main > nav > ul > button.selected {
    color: white;
    background: var(--theme-selected);
 }
 
-body > main > nav > ul > button[data-selected]:hover {
+body > main > nav > ul > button.selected:hover {
    box-shadow: 0 0 6px 0 var(--theme-selected);
 }
 

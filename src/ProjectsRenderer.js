@@ -7,7 +7,7 @@ class ProjectsRenderer {
       this.selectedProject = null;
       this.selectedProjectButton = null;
 
-      this.selectedAttribute = "data-selected";
+      this.selectedClass = "selected";
    }
 
    selectProject(project) {
@@ -17,7 +17,7 @@ class ProjectsRenderer {
 
    selectProjectButton(projectButton) {
       this.selectedProjectButton = projectButton;
-      this.selectedProjectButton.toggleAttribute(this.selectedAttribute);
+      this.selectedProjectButton.classList.add(this.selectedClass);
    }
 
    render(projects) {
@@ -37,7 +37,7 @@ class ProjectsRenderer {
 
          projectButton.addEventListener("click", () => {
             if (this.selectedProjectButton) {
-               this.selectedProjectButton.removeAttribute(this.selectedAttribute);
+               this.selectedProjectButton.classList.remove(this.selectedClass);
             }
 
             this.selectProject(project);

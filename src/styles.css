@@ -55,7 +55,7 @@ body > main > nav > ul > button {
    padding-left: 16px;
    border-radius: 16px;
    font-size: 110%;
-   transition: color 0.15s, background-color 0.15s, box-shadow 0.15s;
+   transition: color 150ms, background-color 150ms, box-shadow 150ms;
 }
 
 body > main > nav > ul > button:hover {

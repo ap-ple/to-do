@@ -1,7 +1,7 @@
 import "./styles.css";
 
-import Project from "./project";
-import Task from "./task";
+import Project from "./Project";
+import Task from "./Task";
 import ProjectsRenderer from "./ProjectsRenderer";
 import TasksRenderer from "./TasksRenderer";
 

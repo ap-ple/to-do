@@ -79,7 +79,7 @@ body > main > nav > ul {
    gap: 12px;
 }
 
-body > main > nav > ul > form {
+body > main > nav > ul form {
    display: flex;
    flex-flow: column;
 }
@@ -96,14 +96,14 @@ body > main > nav > ul .project {
    transition: color 150ms, background-color 150ms;
 }
 
-body > main > nav > ul > button.project {
+body > main > nav > ul button.project {
    display: flex;
    justify-content: space-between;
    align-items: center;
    gap: 16px;
 }
 
-body > main > nav > ul > button.project > div {
+body > main > nav > ul button.project > div {
    color: inherit;
    text-overflow: ellipsis;
    overflow: hidden;

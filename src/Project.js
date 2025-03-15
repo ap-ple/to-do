@@ -19,6 +19,12 @@ class Project {
       this.tasks.push(task);
       this.render();
    }
+
+   removeTask(task) {
+      const taskIndex = this.tasks.indexOf(task);
+      this.tasks.splice(taskIndex, 1);
+      this.render();
+   }
 }
 
 export default Project;

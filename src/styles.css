@@ -54,6 +54,7 @@ body > main > nav > header {
 
 body > main > nav > header > button {
    border: solid var(--theme-border) 1px;
+   background: none;
    border-radius: 100%;
    font-size: 120%;
    width: 50px;

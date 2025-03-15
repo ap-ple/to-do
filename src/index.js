@@ -17,7 +17,7 @@ const tasksRenderer = new TasksRenderer(tasksElement)
 
 const projects = new Array();
 
-const defaultProject = new Project("Default", tasksRenderer);
+const defaultProject = new Project("Untitled Project", tasksRenderer);
 
 const defaultTasks = [
    new Task(

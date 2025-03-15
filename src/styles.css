@@ -99,7 +99,7 @@ body > main > nav > ul > li > button.delete {
    border: none;
    background: none;
    border-radius: 100%;
-   width: 36px;
+   flex-basis: 37px;
    aspect-ratio: 1;
    cursor: pointer;
    opacity: 0;
@@ -135,7 +135,6 @@ body > main > nav > ul > li > form > input {
 }
 
 body > main > nav > ul .project {
-   width: 80%;
    flex: 1;
    text-align: start;
    border: none;

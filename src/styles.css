@@ -130,7 +130,8 @@ body > main > nav > ul button.project.selected::after {
    transition: opacity 150ms;
 }
 
-body > main > nav > ul button.project.selected:hover::after {
+body > main > nav > ul button.project.selected:hover::after,
+body > main > nav > ul button.project.selected:focus-visible::after {
    opacity: 80%;
 }
 

@@ -5,6 +5,7 @@ import Project from "./Project";
 class ProjectsRenderer {
    constructor(projectsElement, tasksRenderer, addProjectButton) {
       this.projectsElement = projectsElement;
+      this.tasksRenderer = tasksRenderer;
 
       this.projects = new Array();
 
@@ -41,7 +42,10 @@ class ProjectsRenderer {
    render() {
       removeChildren(this.projectsElement);
 
-      if (!this.selectedProject) {
+      if (this.projects.length === 0) {
+         this.tasksRenderer.render([]);
+      }
+      else if (!this.selectedProject) {
          this.selectProject(this.projects[0]);
       }
 
@@ -65,6 +69,11 @@ class ProjectsRenderer {
          projectDeleteButton.addEventListener("click", () => {
             const projectIndex = this.projects.indexOf(project);
             this.projects.splice(projectIndex, 1);
+
+            if (this.selectedProject === project) {
+               this.selectedProject = null;
+            }
+            
             this.render();
          });
 

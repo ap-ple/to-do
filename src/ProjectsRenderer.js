@@ -38,7 +38,7 @@ class ProjectsRenderer {
       this.selectedProjectElement?.classList.remove(this.selectedClass);
    }
 
-   render(projects) {
+   render() {
       removeChildren(this.projectsElement);
 
       if (!this.selectedProject) {

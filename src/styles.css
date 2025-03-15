@@ -119,6 +119,11 @@ body > main > nav > ul > li > button.delete:focus-visible {
    background: var(--theme-delete);
 }
 
+body > main > nav > ul > li > .project + button.delete:active {
+   transition: opacity 50ms;
+   opacity: 50%;
+}
+
 body > main > nav > ul > li > form {
    display: flex;
    flex-flow: column;

@@ -205,12 +205,11 @@ body > main > nav > ul .project.selected::selection {
 }
 
 body > main > ul.tasks {
-   --task-size: 200px;
-   --task-layout: repeat(auto-fill, var(--task-size));
+   display: grid;
+   --task-layout: repeat(auto-fill, 200px);
+   grid-template: var(--task-layout) / var(--task-layout);
    padding: 24px;
    gap: 24px;
-   display: grid;
-   grid-template: var(--task-layout) / var(--task-layout);
    justify-content: space-evenly;
    flex: 1;
    transition: opacity 200ms;
@@ -223,7 +222,6 @@ body > main > ul.tasks.hidden {
 
 body > main > ul.tasks > li {
    border: solid var(--theme-border) 1px;
-   height: var(--task-size);
    padding: 24px;
    border-radius: 24px;
    overflow: auto;

@@ -134,6 +134,10 @@ body > main > nav > ul > li > form > input {
    width: 100%;
 }
 
+body > main > nav > ul > li > button.project {
+   width: 80%;
+}
+
 body > main > nav > ul .project {
    flex: 1;
    text-align: start;

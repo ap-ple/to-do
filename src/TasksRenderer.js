@@ -9,7 +9,7 @@ class TasksRenderer {
       removeChildren(this.tasksElement);
 
       for (const task of tasks) {
-         const taskCard = document.createElement("div");
+         const taskCard = document.createElement("li");
          taskCard.innerText = JSON.stringify(task);
 
          this.tasksElement.appendChild(taskCard);

@@ -159,7 +159,7 @@ body > main > ul.tasks.hidden {
    opacity: 0%;
 }
 
-body > main > ul.tasks > * {
+body > main > ul.tasks > li {
    --task-padding: 24px;
    --task-border-size: 1px;
    border: solid var(--theme-border) var(--task-border-size);

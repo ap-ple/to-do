@@ -15,6 +15,8 @@ const projectsRenderer = new ProjectsRenderer(projectsElement);
 const tasksElement = document.querySelector("body > main > ul.tasks")
 const tasksRenderer = new TasksRenderer(tasksElement)
 
+const projects = new Array();
+
 const defaultProject = new Project("Default", tasksRenderer);
 
 const defaultTasks = [
@@ -29,8 +31,6 @@ const defaultTasks = [
 for (const task of defaultTasks) {
    defaultProject.addTask(task);
 }
-
-const projects = new Array();
 
 projects.push(defaultProject);
 

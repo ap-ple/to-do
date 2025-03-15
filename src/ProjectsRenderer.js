@@ -62,6 +62,12 @@ class ProjectsRenderer {
          projectDeleteButton.innerText = "✕";
          projectDeleteButton.classList.add("delete");
 
+         projectDeleteButton.addEventListener("click", () => {
+            const projectIndex = this.projects.indexOf(project);
+            this.projects.splice(projectIndex, 1);
+            this.render();
+         });
+
          if (this.selectedProject === project) {
             this.selectProjectElement(projectButton);
          }

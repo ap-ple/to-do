@@ -9,13 +9,12 @@ import TasksRenderer from "./TasksRenderer";
 
 const TASKS_RESIZE_RENDER_DELAY = 50; // delay in milliseconds to render tasks after resizing
 
-const projectsElement = document.querySelector("body > main > nav > ul")
-const projectsRenderer = new ProjectsRenderer(projectsElement);
+const tasksElement = document.querySelector("body > main > ul.tasks");
+const tasksRenderer = new TasksRenderer(tasksElement);
 
-const tasksElement = document.querySelector("body > main > ul.tasks")
-const tasksRenderer = new TasksRenderer(tasksElement)
-
-const projects = new Array();
+const projectsElement = document.querySelector("body > main > nav > ul");
+const addProjectButton = document.querySelector("body > main > nav > header > button");
+const projectsRenderer = new ProjectsRenderer(projectsElement, tasksRenderer, addProjectButton);
 
 const defaultProject = new Project("Untitled Project", tasksRenderer);
 
@@ -32,9 +31,9 @@ for (const task of defaultTasks) {
    defaultProject.addTask(task);
 }
 
-projects.push(defaultProject);
+projectsRenderer.addProject(defaultProject);
 
-projectsRenderer.render(projects);
+projectsRenderer.render();
 
 const renderTasksAfterDelay = debounce(() => {
    tasksElement.classList.remove("hidden");

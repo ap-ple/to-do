@@ -26,6 +26,7 @@ body {
 body > header {
    padding: 24px;
    background: var(--theme-header);
+   white-space: nowrap;
 }
 
 body > main {
@@ -42,6 +43,33 @@ body > main > nav {
    width: 300px;
    padding: 24px;
    background: var(--theme-sidebar);
+}
+
+body > main > nav > header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: inherit;
+}
+
+body > main > nav > header > button {
+   border: solid var(--theme-border) 1px;
+   border-radius: 100%;
+   font-size: 120%;
+   width: 50px;
+   aspect-ratio: 1;
+   padding: 12px;
+   cursor: pointer;
+   transition: box-shadow 150ms;
+}
+
+body > main > nav > header > button:hover {
+   box-shadow: 0 0 4px 0 var(--theme-border);
+}
+
+body > main > nav > header > button:active {
+   transition: box-shadow 0ms;
+   box-shadow: 0 0 2px 0 var(--theme-border);
 }
 
 body > main > nav > ul {
@@ -67,14 +95,14 @@ body > main > nav > ul .project {
    transition: color 150ms, background-color 150ms;
 }
 
-body > main > nav > ul > button {
+body > main > nav > ul > button.project {
    display: flex;
    justify-content: space-between;
    align-items: center;
    gap: 16px;
 }
 
-body > main > nav > ul > button > div {
+body > main > nav > ul > button.project > div {
    color: inherit;
    text-overflow: ellipsis;
    overflow: hidden;

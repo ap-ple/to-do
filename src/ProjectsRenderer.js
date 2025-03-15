@@ -1,15 +1,27 @@
 import debounce from "lodash.debounce";
 import removeChildren from "./removeChildren";
+import Project from "./Project";
 
 class ProjectsRenderer {
-   constructor(projectsElement) {
+   constructor(projectsElement, tasksRenderer, addProjectButton) {
       this.projectsElement = projectsElement;
+
+      this.projects = new Array();
 
       this.selectedProject = null;
       this.selectedProjectElement = null;
 
+      addProjectButton.addEventListener("click", () => {
+         this.addProject(new Project("Untitled Project", tasksRenderer));
+      });
+
       this.selectedClass = "selected";
       this.projectClass = "project";
+   }
+
+   addProject(project) {
+      this.projects.push(project);
+      this.render();
    }
 
    selectProject(project) {
@@ -30,10 +42,10 @@ class ProjectsRenderer {
       removeChildren(this.projectsElement);
 
       if (!this.selectedProject) {
-         this.selectProject(projects[0]);
+         this.selectProject(this.projects[0]);
       }
 
-      for (const project of projects) {
+      for (const project of this.projects) {
          const projectButton = document.createElement("button");
          const projectButtonTitle = document.createElement("div");
 

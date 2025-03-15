@@ -2,6 +2,7 @@
 class TasksRenderer {
    constructor(tasksElement) {
       this.tasksElement = tasksElement;
+      this.taskClass = "task";
       this.addTaskClass = "add-task";
       this.completeTaskClass = "complete";
 
@@ -40,6 +41,8 @@ class TasksRenderer {
          
          taskCard.appendChild(taskTitle);
          taskCard.appendChild(completeTaskButton);
+
+         taskCard.classList.add(this.taskClass);
          
          taskTitle.innerText = task.title;
          

@@ -10,6 +10,8 @@
    --theme-selected-project-selection-background: yellow;
    --theme-delete: red;
    --theme-delete-text: white;
+   --theme-complete: green;
+   --theme-complete-text: white;
 }
 
 * {
@@ -217,9 +219,63 @@ body > main > ul.tasks.hidden {
 }
 
 body > main > ul.tasks > li {
+   display: flex;
    border: solid var(--theme-border) 1px;
    padding: 24px;
    border-radius: 24px;
-   overflow: auto;
-   white-space: nowrap;
+}
+
+body > main > ul.tasks > li.task {
+   flex-flow: column;
+   justify-content: space-between;
+   gap: 12px;
+}
+
+body > main > ul.tasks > li.task > button.complete {
+   align-self: end;
+   color: var(--theme-complete);
+   font-weight: bold;
+   font-size: 120%;
+   border: none;
+   background: none;
+   border-radius: 100%;
+   height: 36px;
+   aspect-ratio: 1;
+   cursor: pointer;
+   opacity: 0;
+   transition: opacity 150ms, background-color 150ms, color 150ms;
+   padding-bottom: 2px;
+}
+
+body > main > ul.tasks > li.task:hover > button.complete,
+body > main > ul.tasks > li.task:focus-within > button.complete {
+   opacity: 80%;
+}
+
+body > main > ul.tasks > li.task > button.complete:hover,
+body > main > ul.tasks > li.task > button.complete:focus-visible {
+   color: var(--theme-complete-text);
+   background: var(--theme-complete);
+}
+
+body > main > ul.tasks > li.task > button.complete:active {
+   opacity: 50%;
+}
+
+body > main > ul.tasks > li.add-task {
+   border: dashed var(--theme-border) 1px;
+   padding: 0;
+}
+
+body > main > ul.tasks > li.add-task > button {
+   background: none;
+   border: none;
+   cursor: pointer;
+   width: 100%;
+   transition: background-color 150ms;
+   border-radius: inherit;
+}
+
+body > main > ul.tasks > li.add-task > button:hover {
+   background: var(--theme-sidebar);
 }

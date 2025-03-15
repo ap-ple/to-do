@@ -7,6 +7,10 @@ class Project {
       this.tasks = new Array();
    }
 
+   rename(newTitle) {
+      this.title = newTitle;
+   }
+
    render() {
       this.tasksRenderer.render(this.tasks);
    }

@@ -3,12 +3,17 @@
    --theme-header: lightgray;
    --theme-sidebar: rgb(235, 235, 235);
    --theme-border: black;
-   --theme-selected: rgb(50, 50, 200);
+   --theme-text: black;
+   --theme-selected-project-text: white;
+   --theme-selected-project-background: rgb(50, 50, 200);
+   --theme-selected-project-selection-text: black;
+   --theme-selected-project-selection-background: yellow;
 }
 
 * {
    padding: 0;
    margin: 0;
+   color: var(--theme-text);
 }
 
 body {
@@ -34,7 +39,7 @@ body > main > nav {
    flex-flow: column;
    border-right: solid var(--theme-border) 1px;
    gap: 16px;
-   flex-basis: 200px;
+   flex-basis: 300px;
    padding: 24px;
    background: var(--theme-sidebar);
 }
@@ -45,30 +50,57 @@ body > main > nav > ul {
    gap: 12px;
 }
 
-body > main > nav > ul > button {
+body > main > nav > ul > form {
+   display: flex;
+   flex-flow: column;
+}
+
+body > main > nav > ul .project {
    text-align: start;
    border: none;
    background: none;
    cursor: pointer;
    color: rgb(120, 120, 120);
-   padding: 8px;
-   padding-left: 16px;
+   padding: 8px 16px;
    border-radius: 16px;
    font-size: 110%;
-   transition: color 150ms, background-color 150ms, box-shadow 150ms;
+   transition: color 150ms, background-color 150ms;
 }
 
-body > main > nav > ul > button:hover {
-   color: black;
+body > main > nav > ul > button {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 8px;
 }
 
-body > main > nav > ul > button.selected {
-   color: white;
-   background: var(--theme-selected);
+body > main > nav > ul .project:hover {
+   color: var(--theme-text);
 }
 
-body > main > nav > ul > button.selected:hover {
-   box-shadow: 0 0 6px 0 var(--theme-selected);
+body > main > nav > ul .project.selected {
+   color: var(--theme-selected-project-text);
+   background: var(--theme-selected-project-background);
+}
+
+body > main > nav > ul input.project.selected {
+   cursor: text;
+}
+
+body > main > nav > ul button.project.selected::after {
+   opacity: 0%;
+   content: "Edit title";
+   font-size: 60%;
+   transition: opacity 150ms;
+}
+
+body > main > nav > ul button.project.selected:hover::after {
+   opacity: 80%;
+}
+
+body > main > nav > ul .project.selected::selection {
+   color: var(--theme-selected-project-selection-text);
+   background: var(--theme-selected-project-selection-background);
 }
 
 body > main > ul.tasks {

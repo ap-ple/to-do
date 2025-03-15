@@ -1,3 +1,4 @@
+import debounce from "lodash.debounce";
 import removeChildren from "./removeChildren";
 
 class ProjectsRenderer {
@@ -5,9 +6,10 @@ class ProjectsRenderer {
       this.projectsElement = projectsElement;
 
       this.selectedProject = null;
-      this.selectedProjectButton = null;
+      this.selectedProjectElement = null;
 
       this.selectedClass = "selected";
+      this.projectClass = "project";
    }
 
    selectProject(project) {
@@ -15,9 +17,13 @@ class ProjectsRenderer {
       this.selectedProject.render();
    }
 
-   selectProjectButton(projectButton) {
-      this.selectedProjectButton = projectButton;
-      this.selectedProjectButton.classList.add(this.selectedClass);
+   selectProjectElement(projectElement) {
+      this.selectedProjectElement = projectElement;
+      this.selectedProjectElement.classList.add(this.selectedClass);
+   }
+
+   deselectSelectedProjectElement() {
+      this.selectedProjectElement?.classList.remove(this.selectedClass);
    }
 
    render(projects) {
@@ -29,19 +35,73 @@ class ProjectsRenderer {
 
       for (const project of projects) {
          const projectButton = document.createElement("button");
+
          projectButton.innerText = project.title;
+         projectButton.classList.add(this.projectClass);
 
          if (this.selectedProject === project) {
-            this.selectProjectButton(projectButton);
+            this.selectProjectElement(projectButton);
          }
 
          projectButton.addEventListener("click", () => {
-            if (this.selectedProjectButton) {
-               this.selectedProjectButton.classList.remove(this.selectedClass);
+            this.deselectSelectedProjectElement();
+
+            if (this.selectedProjectElement === projectButton) {
+               const projectRenameForm = document.createElement("form");
+               const projectRenameInput = document.createElement("input");
+
+               this.selectProjectElement(projectRenameInput);
+
+               projectRenameInput.addEventListener("focus", () => {
+                  this.deselectSelectedProjectElement();
+
+                  this.selectProjectElement(projectRenameInput);
+               });
+
+               projectRenameForm.appendChild(projectRenameInput);
+               
+               projectRenameInput.classList.add(this.projectClass);
+               projectRenameInput.value = project.title;
+               projectRenameInput.type = "text";
+               projectRenameInput.name = "newProjectTitle";
+               projectRenameInput.autocomplete = "off";
+
+               const handleProjectRenameFormSubmit = debounce(() => {
+                  const formData = new FormData(projectRenameForm);
+
+                  for (const pair of formData) {
+                     const key = pair[0];
+                     const value = pair[1];
+
+                     if (key == "newProjectTitle") {
+                        if (value.length > 0) {
+                           project.rename(value);
+                           projectButton.innerText = project.title;
+                        }
+                     }
+                  }
+                  if (this.projectsElement.contains(projectRenameForm)) {
+                     this.projectsElement.insertBefore(projectButton, projectRenameForm)
+                     this.projectsElement.removeChild(projectRenameForm);
+                  }
+               }, 0);
+
+               projectRenameForm.addEventListener("submit", event => {
+                  event.preventDefault();
+
+                  handleProjectRenameFormSubmit();
+               });
+
+               projectRenameInput.addEventListener("focusout", handleProjectRenameFormSubmit);
+
+               this.projectsElement.insertBefore(projectRenameForm, projectButton)
+               this.projectsElement.removeChild(projectButton);
+
+               projectRenameInput.select();
             }
 
             this.selectProject(project);
-            this.selectProjectButton(projectButton);
+            this.selectProjectElement(projectButton);
          });
 
          this.projectsElement.appendChild(projectButton);

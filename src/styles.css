@@ -66,16 +66,18 @@ body > main > nav > header > button {
    aspect-ratio: 1;
    padding: 6px;
    cursor: pointer;
-   transition: box-shadow 150ms;
+   transition: border-color 150ms, background-color 150ms, color 150ms, opacity 150ms;
 }
 
 body > main > nav > header > button:hover {
-   box-shadow: 0 0 6px 0 var(--theme-border);
+   color: var(--theme-selected-project-text);
+   background: var(--theme-selected-project-background);
+   border: none;
 }
 
 body > main > nav > header > button:active {
-   transition: box-shadow 0ms;
-   box-shadow: none;
+   transition: opacity 50ms;
+   opacity: 50%;
 }
 
 body > main > nav > ul {

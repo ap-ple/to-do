@@ -109,7 +109,8 @@ body > main > nav > ul > button.project > div {
    white-space: nowrap;
 }
 
-body > main > nav > ul .project:hover {
+body > main > nav > ul .project:hover,
+body > main > nav > ul .project:focus-visible {
    color: var(--theme-text);
 }
 

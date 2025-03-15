@@ -12,7 +12,7 @@ class Project {
    }
 
    render() {
-      this.tasksRenderer.render(this.tasks);
+      this.tasksRenderer.render(this);
    }
 
    addTask(task) {

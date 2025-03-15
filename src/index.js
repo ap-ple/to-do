@@ -1,11 +1,13 @@
 import "./styles.css";
 
+import debounce from "lodash.debounce";
+
 import Project from "./Project";
 import Task from "./Task";
 import ProjectsRenderer from "./ProjectsRenderer";
 import TasksRenderer from "./TasksRenderer";
 
-const TASK_RESIZE_RENDER_DELAY = 50; // delay in milliseconds to render tasks after resizing
+const TASKS_RESIZE_RENDER_DELAY = 50; // delay in milliseconds to render tasks after resizing
 
 const projectsElement = document.querySelector("body > main > nav > ul")
 const projectsRenderer = new ProjectsRenderer(projectsElement);
@@ -34,14 +36,11 @@ projects.push(defaultProject);
 
 projectsRenderer.render(projects);
 
-let taskHideTimeout;
+const renderTasksAfterDelay = debounce(() => {
+   tasksElement.classList.remove("hidden");
+}, TASKS_RESIZE_RENDER_DELAY);
 
 window.addEventListener("resize", () => {
    tasksElement.classList.add("hidden");
-   
-   clearTimeout(taskHideTimeout);
-
-   taskHideTimeout = setTimeout(() => {
-      tasksElement.classList.remove("hidden");
-   }, TASK_RESIZE_RENDER_DELAY);
+   renderTasksAfterDelay();
 });

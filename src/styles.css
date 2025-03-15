@@ -8,12 +8,15 @@
    --theme-selected-project-background: rgb(50, 50, 200);
    --theme-selected-project-selection-text: black;
    --theme-selected-project-selection-background: yellow;
+   --theme-delete: red;
+   --theme-delete-text: white;
 }
 
 * {
    padding: 0;
    margin: 0;
    color: var(--theme-text);
+   box-sizing: border-box;
 }
 
 body {
@@ -40,7 +43,8 @@ body > main > nav {
    flex-flow: column;
    border-right: solid var(--theme-border) 1px;
    gap: 16px;
-   width: 300px;
+   min-width: 400px;
+   max-width: 400px;
    padding: 24px;
    background: var(--theme-sidebar);
 }
@@ -49,7 +53,8 @@ body > main > nav > header {
    display: flex;
    justify-content: space-between;
    align-items: center;
-   width: inherit;
+   gap: 12px;
+   width: 100%;
 }
 
 body > main > nav > header > button {
@@ -79,12 +84,52 @@ body > main > nav > ul {
    gap: 12px;
 }
 
-body > main > nav > ul form {
+body > main > nav > ul > li {
+   display: flex;
+   justify-content: space-between;
+   gap: 12px;
+}
+
+body > main > nav > ul > li > button.delete {
+   color: var(--theme-delete);
+   font-weight: bold;
+   font-size: 120%;
+   border: none;
+   background: none;
+   border-radius: 100%;
+   width: 36px;
+   aspect-ratio: 1;
+   cursor: pointer;
+   opacity: 0;
+   transition: opacity 150ms, background-color 150ms, color 150ms;
+   padding-bottom: 2px;
+}
+
+body > main > nav > ul > li:hover > button.delete,
+body > main > nav > ul > li:focus-within > button.delete,
+body > main > nav > ul > li > .project.selected + button.delete {
+   opacity: 80%;
+}
+
+body > main > nav > ul > li > button.delete:hover,
+body > main > nav > ul > li > button.delete:focus-visible {
+   color: var(--theme-delete-text);
+   background: var(--theme-delete);
+}
+
+body > main > nav > ul > li > form {
    display: flex;
    flex-flow: column;
+   width: 100%;
+}
+
+body > main > nav > ul > li > form > input {
+   width: 100%;
 }
 
 body > main > nav > ul .project {
+   width: 80%;
+   flex: 1;
    text-align: start;
    border: none;
    background: none;
@@ -93,7 +138,7 @@ body > main > nav > ul .project {
    padding: 8px 16px;
    border-radius: 16px;
    font-size: 110%;
-   transition: color 150ms, background-color 150ms;
+   transition: color 150ms, background-color 150ms, box-shadow 150ms;
 }
 
 body > main > nav > ul button.project {
@@ -120,11 +165,18 @@ body > main > nav > ul .project.selected {
    background: var(--theme-selected-project-background);
 }
 
-body > main > nav > ul input.project.selected {
-   cursor: text;
+body > main > nav > ul .project.selected:hover,
+body > main > nav > ul .project.selected:focus-visible {
+   outline: none;
+   box-shadow: 0 0 6px var(--theme-selected-project-background);
 }
 
-body > main > nav > ul button.project.selected::after {
+body > main > nav > ul input.project.selected {
+   cursor: text;
+   transition: box-shadow 0ms;
+}
+
+body > main > nav > ul button.project::after {
    opacity: 0%;
    content: "Edit title";
    white-space: nowrap;
@@ -160,11 +212,9 @@ body > main > ul.tasks.hidden {
 }
 
 body > main > ul.tasks > li {
-   --task-padding: 24px;
-   --task-border-size: 1px;
-   border: solid var(--theme-border) var(--task-border-size);
-   height: calc(var(--task-size) - var(--task-padding) * 2 - var(--task-border-size));
-   padding: var(--task-padding);
+   border: solid var(--theme-border) 1px;
+   height: var(--task-size);
+   padding: 24px;
    border-radius: 24px;
    overflow: auto;
    white-space: nowrap;

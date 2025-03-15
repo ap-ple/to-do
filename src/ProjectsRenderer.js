@@ -46,14 +46,21 @@ class ProjectsRenderer {
       }
 
       for (const project of this.projects) {
+         const projectContainer = document.createElement("li");
          const projectButton = document.createElement("button");
          const projectButtonTitle = document.createElement("div");
+         const projectDeleteButton = document.createElement("button");
 
          projectButton.appendChild(projectButtonTitle);
+         projectContainer.appendChild(projectButton);
+         projectContainer.appendChild(projectDeleteButton);
 
          projectButtonTitle.innerText = project.title;
 
          projectButton.classList.add(this.projectClass);
+
+         projectDeleteButton.innerText = "✕";
+         projectDeleteButton.classList.add("delete");
 
          if (this.selectedProject === project) {
             this.selectProjectElement(projectButton);
@@ -66,6 +73,8 @@ class ProjectsRenderer {
                const projectRenameForm = document.createElement("form");
                const projectRenameInput = document.createElement("input");
 
+               projectRenameForm.appendChild(projectRenameInput);
+
                this.selectProjectElement(projectRenameInput);
 
                projectRenameInput.addEventListener("focus", () => {
@@ -74,8 +83,6 @@ class ProjectsRenderer {
                   this.selectProjectElement(projectRenameInput);
                });
 
-               projectRenameForm.appendChild(projectRenameInput);
-               
                projectRenameInput.classList.add(this.projectClass);
                projectRenameInput.value = project.title;
                projectRenameInput.type = "text";
@@ -96,9 +103,9 @@ class ProjectsRenderer {
                         }
                      }
                   }
-                  if (this.projectsElement.contains(projectRenameForm)) {
-                     this.projectsElement.insertBefore(projectButton, projectRenameForm)
-                     this.projectsElement.removeChild(projectRenameForm);
+                  if (projectContainer.contains(projectRenameForm)) {
+                     projectContainer.insertBefore(projectButton, projectRenameForm)
+                     projectContainer.removeChild(projectRenameForm);
                   }
                }, 0);
 
@@ -110,8 +117,8 @@ class ProjectsRenderer {
 
                projectRenameInput.addEventListener("focusout", handleProjectRenameFormSubmit);
 
-               this.projectsElement.insertBefore(projectRenameForm, projectButton)
-               this.projectsElement.removeChild(projectButton);
+               projectContainer.insertBefore(projectRenameForm, projectButton)
+               projectContainer.removeChild(projectButton);
 
                projectRenameInput.select();
             }
@@ -120,7 +127,7 @@ class ProjectsRenderer {
             this.selectProjectElement(projectButton);
          });
 
-         this.projectsElement.appendChild(projectButton);
+         this.projectsElement.appendChild(projectContainer);
       }
    }
 }

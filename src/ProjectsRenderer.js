@@ -35,8 +35,12 @@ class ProjectsRenderer {
 
       for (const project of projects) {
          const projectButton = document.createElement("button");
+         const projectButtonTitle = document.createElement("div");
 
-         projectButton.innerText = project.title;
+         projectButton.appendChild(projectButtonTitle);
+
+         projectButtonTitle.innerText = project.title;
+
          projectButton.classList.add(this.projectClass);
 
          if (this.selectedProject === project) {
@@ -76,7 +80,7 @@ class ProjectsRenderer {
                      if (key == "newProjectTitle") {
                         if (value.length > 0) {
                            project.rename(value);
-                           projectButton.innerText = project.title;
+                           projectButtonTitle.innerText = project.title;
                         }
                      }
                   }

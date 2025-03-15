@@ -39,7 +39,7 @@ body > main > nav {
    flex-flow: column;
    border-right: solid var(--theme-border) 1px;
    gap: 16px;
-   flex-basis: 300px;
+   width: 300px;
    padding: 24px;
    background: var(--theme-sidebar);
 }
@@ -72,6 +72,13 @@ body > main > nav > ul > button {
    justify-content: space-between;
    align-items: center;
    gap: 16px;
+}
+
+body > main > nav > ul > button > div {
+   color: inherit;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   white-space: nowrap;
 }
 
 body > main > nav > ul .project:hover {

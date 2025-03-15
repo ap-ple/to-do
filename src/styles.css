@@ -57,20 +57,20 @@ body > main > nav > header > button {
    background: none;
    border-radius: 100%;
    font-size: 120%;
-   width: 50px;
+   width: 36px;
    aspect-ratio: 1;
-   padding: 12px;
+   padding: 6px;
    cursor: pointer;
    transition: box-shadow 150ms;
 }
 
 body > main > nav > header > button:hover {
-   box-shadow: 0 0 4px 0 var(--theme-border);
+   box-shadow: 0 0 6px 0 var(--theme-border);
 }
 
 body > main > nav > header > button:active {
    transition: box-shadow 0ms;
-   box-shadow: 0 0 2px 0 var(--theme-border);
+   box-shadow: none;
 }
 
 body > main > nav > ul {

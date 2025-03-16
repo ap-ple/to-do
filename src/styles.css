@@ -73,7 +73,8 @@ body > main > nav > header > button {
    transition: background-color 150ms, color 150ms, opacity 150ms, box-shadow 150ms;
 }
 
-body > main > nav > header > button:hover {
+body > main > nav > header > button:hover,
+body > main > nav > header > button:focus-visible {
    box-shadow: none;
    color: var(--theme-selected-project-text);
    background: var(--theme-selected-project-background);

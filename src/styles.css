@@ -60,7 +60,8 @@ body > main > nav > header {
 }
 
 body > main > nav > header > button {
-   border: solid var(--theme-border) 1px;
+   border: none;
+   box-shadow: 0 0 2px 0 var(--theme-border);
    background: none;
    border-radius: 100%;
    font-size: 120%;
@@ -69,13 +70,13 @@ body > main > nav > header > button {
    padding: 6px;
    padding-bottom: 10px;
    cursor: pointer;
-   transition: border-color 150ms, background-color 150ms, color 150ms, opacity 150ms;
+   transition: background-color 150ms, color 150ms, opacity 150ms, box-shadow 150ms;
 }
 
 body > main > nav > header > button:hover {
+   box-shadow: none;
    color: var(--theme-selected-project-text);
    background: var(--theme-selected-project-background);
-   border: var(--theme-selected-project-background);
 }
 
 body > main > nav > header > button:active {

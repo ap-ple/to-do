@@ -5,6 +5,8 @@ class TasksRenderer {
    constructor(tasksElement) {
       this.tasksElement = tasksElement;
       this.taskClass = "task";
+      this.taskDescriptionClass = "description";
+      this.actionsClass = "actions";
       this.addTaskClass = "add-task";
       this.completeTaskClass = "complete";
 
@@ -44,17 +46,22 @@ class TasksRenderer {
          const taskCard = document.createElement("li");
          const taskTitle = document.createElement("h2");
          const taskDescription = document.createElement("div");
+         const actions = document.createElement("div");
          const completeTaskButton = document.createElement("button");
          
          taskCard.appendChild(taskTitle);
          taskCard.appendChild(taskDescription);
-         taskCard.appendChild(completeTaskButton);
+         taskCard.appendChild(actions);
+         actions.appendChild(completeTaskButton);
 
          taskCard.classList.add(this.taskClass);
          
          taskTitle.innerText = task.title;
 
          taskDescription.innerText = task.description;
+         taskDescription.classList.add(this.taskDescriptionClass);
+
+         actions.classList.add(this.actionsClass);
          
          completeTaskButton.innerText = "✓";
          completeTaskButton.classList.add(this.completeTaskClass);

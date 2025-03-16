@@ -243,9 +243,14 @@ body > main > ul.tasks > li.task > h2 {
    font-size: 1.2rem;
 }
 
-body > main > ul.tasks > li.task > button.complete {
+body > main > ul.tasks > li.task > .actions {
+   display: flex;
+   justify-content: end;
    margin-top: auto;
-   align-self: end;
+   gap: 12px;
+}
+
+body > main > ul.tasks > li.task > .actions > button.complete {
    color: var(--theme-complete);
    font-weight: bold;
    font-size: 1.2rem;
@@ -260,18 +265,18 @@ body > main > ul.tasks > li.task > button.complete {
    padding-bottom: 2px;
 }
 
-body > main > ul.tasks > li.task:hover > button.complete,
-body > main > ul.tasks > li.task:focus-within > button.complete {
+body > main > ul.tasks > li.task:hover > .actions > button.complete,
+body > main > ul.tasks > li.task:focus-within > .actions > button.complete {
    opacity: 80%;
 }
 
-body > main > ul.tasks > li.task > button.complete:hover,
-body > main > ul.tasks > li.task > button.complete:focus-visible {
+body > main > ul.tasks > li.task > .actions > button.complete:hover,
+body > main > ul.tasks > li.task > .actions > button.complete:focus-visible {
    color: var(--theme-complete-text);
    background: var(--theme-complete);
 }
 
-body > main > ul.tasks > li.task > button.complete:active {
+body > main > ul.tasks > li.task > .actions > button.complete:active {
    opacity: 50%;
 }
 

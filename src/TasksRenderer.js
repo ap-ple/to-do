@@ -28,7 +28,7 @@ class TasksRenderer {
          const addTaskButton = document.createElement("button");
 
          addTaskButton.addEventListener("click", () => {
-            project.addTask(new Task("New task", "Type description here...", "Today", "Low"));
+            project.addTask(new Task("New Task", "Type description here...", "Today", "Low"));
          });
 
          this.addTaskCard.appendChild(addTaskButton);
@@ -43,14 +43,18 @@ class TasksRenderer {
       for (const task of project.tasks) {
          const taskCard = document.createElement("li");
          const taskTitle = document.createElement("h2");
+         const taskDescription = document.createElement("div");
          const completeTaskButton = document.createElement("button");
          
          taskCard.appendChild(taskTitle);
+         taskCard.appendChild(taskDescription);
          taskCard.appendChild(completeTaskButton);
 
          taskCard.classList.add(this.taskClass);
          
          taskTitle.innerText = task.title;
+
+         taskDescription.innerText = task.description;
          
          completeTaskButton.innerText = "✓";
          completeTaskButton.classList.add(this.completeTaskClass);

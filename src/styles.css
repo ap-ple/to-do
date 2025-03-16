@@ -230,11 +230,20 @@ body > main > ul.tasks > li {
 
 body > main > ul.tasks > li.task {
    flex-flow: column;
-   justify-content: space-between;
    gap: 12px;
 }
 
+body > main > ul.tasks > li.task > * {
+   text-overflow: ellipsis;
+   overflow: hidden;
+}
+
+body > main > ul.tasks > li.task > h2 {
+   font-size: 120%;
+}
+
 body > main > ul.tasks > li.task > button.complete {
+   margin-top: auto;
    align-self: end;
    color: var(--theme-complete);
    font-weight: bold;

@@ -64,7 +64,7 @@ body > main > nav > header > button {
    box-shadow: 0 0 2px 0 var(--theme-border);
    background: none;
    border-radius: 100%;
-   font-size: 120%;
+   font-size: 1.2rem;
    height: 44px;
    aspect-ratio: 1;
    padding: 6px;
@@ -100,7 +100,7 @@ body > main > nav > ul > li {
 body > main > nav > ul > li > button.delete {
    color: var(--theme-delete);
    font-weight: bold;
-   font-size: 120%;
+   font-size: 1.2rem;
    border: none;
    background: none;
    border-radius: 100%;
@@ -147,7 +147,7 @@ body > main > nav > ul .project {
    color: rgb(120, 120, 120);
    padding: 8px 16px;
    border-radius: 16px;
-   font-size: 110%;
+   font-size: 1.1rem;
    transition: color 150ms, background-color 150ms, box-shadow 150ms;
 }
 
@@ -190,7 +190,7 @@ body > main > nav > ul button.project::after {
    opacity: 0%;
    content: "Edit title";
    white-space: nowrap;
-   font-size: 60%;
+   font-size: 0.6rem;
    transition: opacity 150ms;
 }
 
@@ -240,7 +240,7 @@ body > main > ul.tasks > li.task > * {
 }
 
 body > main > ul.tasks > li.task > h2 {
-   font-size: 120%;
+   font-size: 1.2rem;
 }
 
 body > main > ul.tasks > li.task > button.complete {
@@ -248,7 +248,7 @@ body > main > ul.tasks > li.task > button.complete {
    align-self: end;
    color: var(--theme-complete);
    font-weight: bold;
-   font-size: 120%;
+   font-size: 1.2rem;
    border: none;
    background: none;
    border-radius: 100%;

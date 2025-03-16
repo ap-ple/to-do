@@ -288,7 +288,8 @@ body > main > ul.tasks > li.add-task > button {
    border-radius: inherit;
 }
 
-body > main > ul.tasks > li.add-task > button:hover {
+body > main > ul.tasks > li.add-task > button:hover,
+body > main > ul.tasks > li.add-task > button:focus-visible {
    background: var(--theme-sidebar);
 }
 

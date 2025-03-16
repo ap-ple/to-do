@@ -43,7 +43,7 @@ class ProjectsRenderer {
       removeChildren(this.projectsElement);
 
       if (this.projects.length === 0) {
-         this.tasksRenderer.render([]);
+         this.tasksRenderer.render();
       }
       else if (!this.selectedProject) {
          this.selectProject(this.projects[0]);

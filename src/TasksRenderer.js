@@ -20,6 +20,11 @@ class TasksRenderer {
             this.tasksElement.removeChild(this.addTaskCard);
          }
 
+         if (!project) {
+            this.addTaskCard = null;
+            return;
+         }
+
          this.project = project;
          this.addTaskCard = document.createElement("li");
          

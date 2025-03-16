@@ -1,3 +1,4 @@
+import Task from "./Task";
 
 class TasksRenderer {
    constructor(tasksElement) {
@@ -31,6 +32,10 @@ class TasksRenderer {
          this.addTaskCard.classList.add(this.addTaskClass);
 
          const addTaskButton = document.createElement("button");
+
+         addTaskButton.addEventListener("click", () => {
+            project.addTask(new Task("New task", "New task description", "Today", "Medium"));
+         });
 
          this.addTaskCard.appendChild(addTaskButton);
 

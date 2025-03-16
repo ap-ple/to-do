@@ -28,7 +28,7 @@ class TasksRenderer {
          const addTaskButton = document.createElement("button");
 
          addTaskButton.addEventListener("click", () => {
-            project.addTask(new Task("New task", "New task description", "Today", "Medium"));
+            project.addTask(new Task("New task", "Type description here...", "Today", "Low"));
          });
 
          this.addTaskCard.appendChild(addTaskButton);

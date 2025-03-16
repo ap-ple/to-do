@@ -1,4 +1,5 @@
 import Task from "./Task";
+import removeChildren from "./removeChildren";
 
 class TasksRenderer {
    constructor(tasksElement) {
@@ -12,20 +13,13 @@ class TasksRenderer {
    }
 
    render(project) {
-      while (this.tasksElement.firstChild !== this.addTaskCard) {
-         this.tasksElement.removeChild(this.tasksElement.firstChild);
+      removeChildren(this.tasksElement);
+
+      if (!project) {
+         return;
       }
       
       if (this.project !== project) {
-         if (this.addTaskCard) {
-            this.tasksElement.removeChild(this.addTaskCard);
-         }
-
-         if (!project) {
-            this.addTaskCard = null;
-            return;
-         }
-
          this.project = project;
          this.addTaskCard = document.createElement("li");
          
@@ -43,6 +37,8 @@ class TasksRenderer {
 
          this.tasksElement.appendChild(this.addTaskCard);
       }
+
+      this.tasksElement.appendChild(this.addTaskCard);
       
       for (const task of project.tasks) {
          const taskCard = document.createElement("li");

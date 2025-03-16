@@ -274,10 +274,14 @@ body > main > ul.tasks > li.add-task > button {
    border: none;
    cursor: pointer;
    width: 100%;
-   transition: background-color 150ms;
+   transition: background-color 150ms, opacity 150ms;
    border-radius: inherit;
 }
 
 body > main > ul.tasks > li.add-task > button:hover {
    background: var(--theme-sidebar);
+}
+
+body > main > ul.tasks > li.add-task > button:active {
+   opacity: 60%;
 }

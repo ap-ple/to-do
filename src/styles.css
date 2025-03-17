@@ -28,9 +28,12 @@
    border-radius: 100%;
 }
 
-button {
+button, input {
    border: none;
    background: none;
+}
+
+button {
    cursor: pointer;
 }
 
@@ -139,8 +142,6 @@ body > main > nav > ul > li > form {
 body > main > nav > ul > li .project {
    flex: 1;
    text-align: start;
-   border: none;
-   background: none;
    color: rgb(120, 120, 120);
    padding: 8px 16px;
    border-radius: 16px;

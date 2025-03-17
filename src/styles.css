@@ -156,6 +156,10 @@ body > main > nav > ul > li > button.project {
    gap: 16px;
 }
 
+body > main > nav > ul > li > button.project.selected {
+   outline-offset: 6px;
+}
+
 body > main > nav > ul > li > button.project > div {
    color: inherit;
    text-overflow: ellipsis;
@@ -188,7 +192,6 @@ body > main > nav > ul > li .project.selected {
 
 body > main > nav > ul > li .project.selected:hover,
 body > main > nav > ul > li .project.selected:focus-visible {
-   outline: none;
    box-shadow: 0 0 6px var(--theme-selected-project-background);
 }
 
@@ -199,6 +202,7 @@ body > main > nav > ul > li .project.selected::selection {
 
 body > main > nav > ul > li > form > input.project.selected {
    transition: box-shadow 0ms;
+   outline: none;
 }
 
 body > main > ul.tasks {

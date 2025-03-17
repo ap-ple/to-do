@@ -1,6 +1,6 @@
 
 :root {
-   --edit-message: "Click to edit";
+   --edit-message: "Edit";
    --theme-header: lightgray;
    --theme-sidebar: rgb(235, 235, 235);
    --theme-border: black;
@@ -165,13 +165,11 @@ body > main > nav > ul > li > button.project > div {
    color: inherit;
    text-overflow: ellipsis;
    overflow: hidden;
-   white-space: nowrap;
 }
 
 body > main > nav > ul > li > button.project::after {
    opacity: 0%;
    content: var(--edit-message);
-   white-space: nowrap;
    font-size: 0.6rem;
    transition: opacity 150ms;
 }
@@ -236,19 +234,58 @@ body > main > ul.tasks > li.task {
    gap: 12px;
 }
 
-body > main > ul.tasks > li.task > * {
+body > main > ul.tasks > li.task .title {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   outline-offset: 4px;
+   gap: 8px;
+}
+
+body > main > ul.tasks > li.task .title > div {
+   font-size: 1.2rem;
+   white-space: nowrap;
+   font-weight: bold;
    text-overflow: ellipsis;
    overflow: hidden;
 }
 
-body > main > ul.tasks > li.task > h2 {
-   font-size: 1.2rem;
+body > main > ul.tasks > li.task .title::after {
+   opacity: 0%;
+   content: var(--edit-message);
+   font-size: 0.5rem;
+   transition: opacity 150ms;
+}
+
+body > main > ul.tasks > li.task .title:hover::after,
+body > main > ul.tasks > li.task .title:focus-visible::after {
+   opacity: 60%;
+}
+
+body > main > ul.tasks > li.task .description {
+   display: flex;
+   text-align: start;
+   overflow: auto;
+   outline-offset: 4px;
+   gap: 8px;
+   flex: 1;
+}
+
+body > main > ul.tasks > li.task .description::after {
+   opacity: 0%;
+   content: var(--edit-message);
+   font-size: 0.5rem;
+   transition: opacity 150ms;
+}
+
+body > main > ul.tasks > li.task .description:hover::after,
+body > main > ul.tasks > li.task .description:focus-visible::after {
+   opacity: 60%;
 }
 
 body > main > ul.tasks > li.task > .actions {
    display: flex;
    justify-content: end;
-   margin-top: auto;
    padding: 2px;
    gap: 12px;
 }

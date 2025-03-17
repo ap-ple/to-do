@@ -4,8 +4,9 @@ import removeChildren from "./removeChildren";
 class TasksRenderer {
    constructor(tasksElement) {
       this.tasksElement = tasksElement;
-      
+
       this.taskClass = "task";
+      this.taskTitleClass = "title";
       this.taskDescriptionClass = "description";
 
       this.project = null;
@@ -42,22 +43,30 @@ class TasksRenderer {
       
       for (const task of project.tasks) {
          const taskCard = document.createElement("li");
-         const taskTitle = document.createElement("h2");
+         const taskTitleButton = document.createElement("button");
+         const taskTitle = document.createElement("div");
+         const taskDescriptionButton = document.createElement("button");
          const taskDescription = document.createElement("div");
          const actions = document.createElement("div");
          const completeTaskButton = document.createElement("button");
          
-         taskCard.appendChild(taskTitle);
-         taskCard.appendChild(taskDescription);
-         taskCard.appendChild(actions);
+         taskTitleButton.appendChild(taskTitle);
+         taskDescriptionButton.appendChild(taskDescription);
          actions.appendChild(completeTaskButton);
+
+         taskCard.appendChild(taskTitleButton);
+         taskCard.appendChild(taskDescriptionButton);
+         taskCard.appendChild(actions);
 
          taskCard.classList.add(this.taskClass);
          
+         taskTitleButton.classList.add(this.taskTitleClass);
+         
          taskTitle.innerText = task.title;
 
+         taskDescriptionButton.classList.add(this.taskDescriptionClass);
+
          taskDescription.innerText = task.description;
-         taskDescription.classList.add(this.taskDescriptionClass);
 
          actions.classList.add("actions");
          

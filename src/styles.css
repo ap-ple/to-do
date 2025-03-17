@@ -248,6 +248,7 @@ body > main > ul.tasks > li.task > .actions {
    display: flex;
    justify-content: end;
    margin-top: auto;
+   padding: 2px;
    gap: 12px;
 }
 

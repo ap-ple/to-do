@@ -4,11 +4,9 @@ import removeChildren from "./removeChildren";
 class TasksRenderer {
    constructor(tasksElement) {
       this.tasksElement = tasksElement;
+      
       this.taskClass = "task";
       this.taskDescriptionClass = "description";
-      this.actionsClass = "actions";
-      this.addTaskClass = "add-task";
-      this.completeTaskClass = "complete";
 
       this.project = null;
       this.addTaskCard = null;
@@ -25,7 +23,7 @@ class TasksRenderer {
          this.project = project;
          this.addTaskCard = document.createElement("li");
          
-         this.addTaskCard.classList.add(this.addTaskClass);
+         this.addTaskCard.classList.add("add-task");
 
          const addTaskButton = document.createElement("button");
 
@@ -61,10 +59,10 @@ class TasksRenderer {
          taskDescription.innerText = task.description;
          taskDescription.classList.add(this.taskDescriptionClass);
 
-         actions.classList.add(this.actionsClass);
+         actions.classList.add("actions");
          
          completeTaskButton.innerText = "✓";
-         completeTaskButton.classList.add(this.completeTaskClass);
+         completeTaskButton.classList.add("complete");
          completeTaskButton.classList.add("circle");
          
          completeTaskButton.addEventListener("click", () => {

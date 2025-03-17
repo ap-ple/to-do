@@ -205,7 +205,7 @@ body > main > nav > ul > li > form > input.project.selected {
 }
 
 body > main > ul.tasks {
-   --task-size: 200px;
+   --task-size: 220px;
    --task-layout: repeat(auto-fill, var(--task-size));
    display: grid;
    grid-template: var(--task-layout) / var(--task-layout);

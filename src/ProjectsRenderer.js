@@ -105,8 +105,7 @@ class ProjectsRenderer {
                projectRenameInput.type = "text";
                projectRenameInput.name = "newProjectTitle";
                projectRenameInput.autocomplete = "off";
-               projectRenameInput.autocorrect = "off";
-               projectRenameInput.spellcheck = "false";
+               projectRenameInput.spellcheck = false;
 
                const handleProjectRenameFormSubmit = debounce(() => {
                   const formData = new FormData(projectRenameForm);

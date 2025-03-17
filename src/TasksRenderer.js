@@ -65,6 +65,7 @@ class TasksRenderer {
          
          completeTaskButton.innerText = "✓";
          completeTaskButton.classList.add(this.completeTaskClass);
+         completeTaskButton.classList.add("circle");
          
          completeTaskButton.addEventListener("click", () => {
             project.removeTask(task);

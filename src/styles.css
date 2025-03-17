@@ -275,6 +275,7 @@ body > main > ul.tasks > li.task .description > div:empty {
 }
 
 body > main > ul.tasks > li.task .description::after {
+   padding-top: 4px;
    opacity: 0%;
    content: var(--edit-message);
    font-size: 0.5rem;

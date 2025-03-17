@@ -1,5 +1,6 @@
 
 :root {
+   --edit-message: "Click to edit";
    --theme-header: lightgray;
    --theme-sidebar: rgb(235, 235, 235);
    --theme-border: black;
@@ -188,7 +189,7 @@ body > main > nav > ul input.project.selected {
 
 body > main > nav > ul button.project::after {
    opacity: 0%;
-   content: "Edit title";
+   content: var(--edit-message);
    white-space: nowrap;
    font-size: 0.6rem;
    transition: opacity 150ms;

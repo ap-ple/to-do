@@ -270,6 +270,10 @@ body > main > ul.tasks > li.task .description {
    flex: 1;
 }
 
+body > main > ul.tasks > li.task .description > div:empty {
+   display: none;
+}
+
 body > main > ul.tasks > li.task .description::after {
    opacity: 0%;
    content: var(--edit-message);

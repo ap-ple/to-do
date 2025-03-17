@@ -34,7 +34,7 @@ class TasksRenderer {
 
          this.addTaskCard.appendChild(addTaskButton);
 
-         addTaskButton.innerText = "+\nAdd Task";
+         addTaskButton.innerText = "+\nAdd task";
 
          this.tasksElement.appendChild(this.addTaskCard);
       }

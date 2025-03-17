@@ -115,7 +115,7 @@ body > main > nav > ul > li > button.delete {
 
 body > main > nav > ul > li:hover > button.delete,
 body > main > nav > ul > li:focus-within > button.delete,
-body > main > nav > ul > li > .project.selected + button.delete {
+body > main > nav > ul > li .project.selected + button.delete {
    opacity: 80%;
 }
 
@@ -125,7 +125,7 @@ body > main > nav > ul > li > button.delete:focus-visible {
    background: var(--theme-delete);
 }
 
-body > main > nav > ul > li > .project + button.delete:active {
+body > main > nav > ul > li .project + button.delete:active {
    transition: opacity 50ms;
    opacity: 50%;
 }
@@ -135,11 +135,7 @@ body > main > nav > ul > li > form {
    width: 100%;
 }
 
-body > main > nav > ul > li > button.project {
-   width: 80%;
-}
-
-body > main > nav > ul .project {
+body > main > nav > ul > li .project {
    flex: 1;
    text-align: start;
    border: none;
@@ -152,42 +148,22 @@ body > main > nav > ul .project {
    transition: color 150ms, background-color 150ms, box-shadow 150ms;
 }
 
-body > main > nav > ul button.project {
+body > main > nav > ul > li > button.project {
    display: flex;
    justify-content: space-between;
    align-items: center;
+   width: 80%;
    gap: 16px;
 }
 
-body > main > nav > ul button.project > div {
+body > main > nav > ul > li > button.project > div {
    color: inherit;
    text-overflow: ellipsis;
    overflow: hidden;
    white-space: nowrap;
 }
 
-body > main > nav > ul .project:hover,
-body > main > nav > ul .project:focus-visible {
-   color: var(--theme-text);
-}
-
-body > main > nav > ul .project.selected {
-   color: var(--theme-selected-project-text);
-   background: var(--theme-selected-project-background);
-}
-
-body > main > nav > ul .project.selected:hover,
-body > main > nav > ul .project.selected:focus-visible {
-   outline: none;
-   box-shadow: 0 0 6px var(--theme-selected-project-background);
-}
-
-body > main > nav > ul input.project.selected {
-   cursor: text;
-   transition: box-shadow 0ms;
-}
-
-body > main > nav > ul button.project::after {
+body > main > nav > ul > li > button.project::after {
    opacity: 0%;
    content: var(--edit-message);
    white-space: nowrap;
@@ -195,14 +171,35 @@ body > main > nav > ul button.project::after {
    transition: opacity 150ms;
 }
 
-body > main > nav > ul button.project.selected:hover::after,
-body > main > nav > ul button.project.selected:focus-visible::after {
+body > main > nav > ul > li > button.project.selected:hover::after,
+body > main > nav > ul > li > button.project.selected:focus-visible::after {
    opacity: 80%;
 }
 
-body > main > nav > ul .project.selected::selection {
+body > main > nav > ul > li .project:hover,
+body > main > nav > ul > li .project:focus-visible {
+   color: var(--theme-text);
+}
+
+body > main > nav > ul > li .project.selected {
+   color: var(--theme-selected-project-text);
+   background: var(--theme-selected-project-background);
+}
+
+body > main > nav > ul > li .project.selected:hover,
+body > main > nav > ul > li .project.selected:focus-visible {
+   outline: none;
+   box-shadow: 0 0 6px var(--theme-selected-project-background);
+}
+
+body > main > nav > ul > li .project.selected::selection {
    color: var(--theme-selected-project-selection-text);
    background: var(--theme-selected-project-selection-background);
+}
+
+body > main > nav > ul > li > form > input.project.selected {
+   cursor: text;
+   transition: box-shadow 0ms;
 }
 
 body > main > ul.tasks {

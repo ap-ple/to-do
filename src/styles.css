@@ -1,5 +1,6 @@
 
 :root {
+   height: 100%;
    --edit-message: "Edit";
    --theme-header: lightgray;
    --theme-sidebar: rgb(235, 235, 235);
@@ -39,7 +40,7 @@ button {
 body {
    display: flex;
    flex-flow: column;
-   min-height: 100vh;
+   min-height: 100%;
 }
 
 body > header {

@@ -1,4 +1,5 @@
 import Task from "./Task";
+import createEditable from "./createEditable";
 import removeChildren from "./removeChildren";
 
 class TasksRenderer {
@@ -61,10 +62,18 @@ class TasksRenderer {
          taskCard.classList.add(this.taskClass);
          
          taskTitleButton.classList.add(this.taskTitleClass);
+
+         taskTitleButton.addEventListener("click", () => {
+            createEditable(taskTitleButton, 1, value => task.setTitle(value));
+         });
          
          taskTitle.innerText = task.title;
 
          taskDescriptionButton.classList.add(this.taskDescriptionClass);
+
+         taskDescriptionButton.addEventListener("click", () => {
+            createEditable(taskDescriptionButton, 0, value => task.setDescription(value));
+         });
 
          taskDescription.innerText = task.description;
 

@@ -6,6 +6,14 @@ class Task {
       this.dueDate = dueDate;
       this.priority = priority;
    }
+
+   setTitle(newTitle) {
+      this.title = newTitle;
+   }
+
+   setDescription(newDescription) {
+      this.description = newDescription;
+   }
 }
 
 export default Task;

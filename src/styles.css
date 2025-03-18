@@ -238,15 +238,23 @@ body > main > ul.tasks > li.task .title {
    display: flex;
    align-items: center;
    outline-offset: 4px;
+   font-size: 1.2rem;
    gap: 12px;
 }
 
 body > main > ul.tasks > li.task .title > div {
-   font-size: 1.2rem;
    white-space: nowrap;
-   font-weight: bold;
    text-overflow: ellipsis;
    overflow: hidden;
+}
+
+body > main > ul.tasks > li.task .title > div,
+body > main > ul.tasks > li.task input.title {
+   font-weight: bold;
+}
+
+body > main > ul.tasks > li.task input.title {
+   width: 90%;
 }
 
 body > main > ul.tasks > li.task .title::after {
@@ -261,6 +269,10 @@ body > main > ul.tasks > li.task .title:focus-visible::after {
    opacity: 60%;
 }
 
+body > main > ul.tasks > li.task form:has(.description) {
+   flex: 1;
+}
+
 body > main > ul.tasks > li.task .description {
    display: flex;
    text-align: start;
@@ -268,6 +280,11 @@ body > main > ul.tasks > li.task .description {
    outline-offset: 4px;
    gap: 12px;
    flex: 1;
+}
+
+body > main > ul.tasks > li.task .description > div {
+   text-overflow: ellipsis;
+   overflow-x: hidden;
 }
 
 body > main > ul.tasks > li.task .description > div:empty {

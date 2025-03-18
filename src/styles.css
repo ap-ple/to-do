@@ -5,6 +5,7 @@
    --theme-sidebar: rgb(235, 235, 235);
    --theme-border: black;
    --theme-text: black;
+   --theme-task: white;
    --theme-inactive-project-text: rgb(120, 120, 120);
    --theme-selected-project-text: white;
    --theme-selected-project-background: rgb(50, 50, 200);
@@ -221,6 +222,7 @@ body > main > ul.tasks > li {
    height: var(--task-size);
    padding: 24px;
    border-radius: 24px;
+   background: var(--theme-task);
 }
 
 body > main > ul.tasks > li.task {

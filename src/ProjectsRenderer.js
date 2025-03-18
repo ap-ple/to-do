@@ -1,4 +1,4 @@
-import debounce from "lodash.debounce";
+import createEditable from "./createEditable"
 import removeChildren from "./removeChildren";
 import Project from "./Project";
 
@@ -87,58 +87,8 @@ class ProjectsRenderer {
             this.deselectSelectedProjectElement();
 
             if (this.selectedProjectElement === projectButton) {
-               const projectRenameForm = document.createElement("form");
-               const projectRenameInput = document.createElement("input");
-
-               projectRenameForm.appendChild(projectRenameInput);
-
-               this.selectProjectElement(projectRenameInput);
-
-               projectRenameInput.addEventListener("focus", () => {
-                  this.deselectSelectedProjectElement();
-
-                  this.selectProjectElement(projectRenameInput);
-               });
-
-               projectRenameInput.classList.add(this.projectClass);
-               projectRenameInput.value = project.title;
-               projectRenameInput.type = "text";
-               projectRenameInput.name = "newProjectTitle";
-               projectRenameInput.autocomplete = "off";
-               projectRenameInput.spellcheck = false;
-
-               const handleProjectRenameFormSubmit = debounce(() => {
-                  const formData = new FormData(projectRenameForm);
-
-                  for (const pair of formData) {
-                     const key = pair[0];
-                     const value = pair[1];
-
-                     if (key == "newProjectTitle") {
-                        if (value.length > 0) {
-                           project.rename(value);
-                           projectButtonTitle.innerText = project.title;
-                        }
-                     }
-                  }
-                  if (projectContainer.contains(projectRenameForm)) {
-                     projectContainer.insertBefore(projectButton, projectRenameForm)
-                     projectContainer.removeChild(projectRenameForm);
-                  }
-               }, 0);
-
-               projectRenameForm.addEventListener("submit", event => {
-                  event.preventDefault();
-
-                  handleProjectRenameFormSubmit();
-               });
-
-               projectRenameInput.addEventListener("focusout", handleProjectRenameFormSubmit);
-
-               projectContainer.insertBefore(projectRenameForm, projectButton)
-               projectContainer.removeChild(projectButton);
-
-               projectRenameInput.select();
+               const editable = createEditable(projectButton, 1, value => project.rename(value));
+               this.selectProjectElement(editable);
             }
 
             this.selectProject(project);

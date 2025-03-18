@@ -87,8 +87,8 @@ class ProjectsRenderer {
             this.deselectSelectedProjectElement();
 
             if (this.selectedProjectElement === projectButton) {
-               const editable = createEditable(projectButton, 1, value => project.rename(value));
-               this.selectProjectElement(editable);
+               const projectEditable = createEditable(projectButton, 1, value => project.rename(value));
+               this.selectProjectElement(projectEditable);
             }
 
             this.selectProject(project);

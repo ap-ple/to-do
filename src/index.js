@@ -6,7 +6,7 @@ import Project from "./Project";
 import ProjectsRenderer from "./ProjectsRenderer";
 import TasksRenderer from "./TasksRenderer";
 
-const TASKS_RESIZE_RENDER_DELAY = 50; // delay in milliseconds to render tasks after resizing
+// const TASKS_RESIZE_RENDER_DELAY = 50; // delay in milliseconds to render tasks after resizing
 
 const tasksElement = document.querySelector("body > main > ul.tasks");
 const tasksRenderer = new TasksRenderer(tasksElement);

@@ -274,7 +274,7 @@ body > main > ul.tasks > li.task .description {
    text-align: start;
    overflow: auto;
    outline-offset: 4px;
-   gap: 12px;
+   gap: 8px;
    flex: 1;
 }
 

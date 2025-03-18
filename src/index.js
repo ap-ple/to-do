@@ -19,11 +19,11 @@ const defaultProject = new Project("Untitled Project", tasksRenderer);
 
 projectsRenderer.addProject(defaultProject);
 
-const renderTasksAfterDelay = debounce(() => {
-   tasksElement.classList.remove("hidden");
-}, TASKS_RESIZE_RENDER_DELAY);
+// const renderTasksAfterDelay = debounce(() => {
+//    tasksElement.classList.remove("hidden");
+// }, TASKS_RESIZE_RENDER_DELAY);
 
-window.addEventListener("resize", () => {
-   tasksElement.classList.add("hidden");
-   renderTasksAfterDelay();
-});
+// window.addEventListener("resize", () => {
+//    tasksElement.classList.add("hidden");
+//    renderTasksAfterDelay();
+// });

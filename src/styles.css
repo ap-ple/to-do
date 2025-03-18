@@ -5,6 +5,7 @@
    --theme-sidebar: rgb(235, 235, 235);
    --theme-border: black;
    --theme-text: black;
+   --theme-inactive-project-text: rgb(120, 120, 120);
    --theme-selected-project-text: white;
    --theme-selected-project-background: rgb(50, 50, 200);
    --theme-selected-project-selection-text: black;
@@ -142,7 +143,7 @@ body > main > nav > ul > li > form {
 body > main > nav > ul > li .project {
    flex: 1;
    text-align: start;
-   color: rgb(120, 120, 120);
+   color: var(--theme-inactive-project-text);
    padding: 8px 16px;
    border-radius: 16px;
    font-size: 1.1rem;

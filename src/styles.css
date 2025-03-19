@@ -259,7 +259,7 @@ body > main > ul.tasks > li.task:focus-within::before {
    opacity: 60%;
 }
 
-body > main > ul.tasks > li.task[data-due]::before {
+body > main > ul.tasks > li.task::before {
    content: "Due " attr(data-due);
 }
 

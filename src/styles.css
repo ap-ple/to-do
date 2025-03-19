@@ -204,10 +204,11 @@ body > main > nav > ul > li > form > input.project.selected {
 
 body > main > ul.tasks {
    --task-size: 220px;
+   --task-padding: 24px;
    --task-layout: repeat(auto-fill, var(--task-size));
    display: grid;
    grid-template: var(--task-layout) / var(--task-layout);
-   padding: 24px;
+   padding: var(--task-padding);
    gap: 24px;
    justify-content: space-evenly;
    flex: 1;
@@ -241,6 +242,35 @@ body > main > ul.tasks > li.task[data-priority=Important] {
 
 body > main > ul.tasks > li.task[data-priority=Urgent] {
    background: var(--theme-task-high-priority);
+}
+
+body > main > ul.tasks > li.task::before {
+   margin: calc(var(--task-padding) / -4) 0;
+   text-align: right;
+   font-size: 0.5rem;
+   opacity: 0;
+   transition: opacity 150ms;
+}
+
+body > main > ul.tasks > li.task:hover::before,
+body > main > ul.tasks > li.task:focus-within::before {
+   opacity: 60%;
+}
+
+body > main > ul.tasks > li.task::before {
+   content: "No due date";
+}
+
+body > main > ul.tasks > li.task[data-due$=days]::before {
+   content: "Due in " attr(data-due);
+}
+
+body > main > ul.tasks > li.task[data-due=Today]::before {
+   content: "Due today";
+}
+
+body > main > ul.tasks > li.task[data-due=Overdue]::before {
+   content: "Overdue";
 }
 
 body > main > ul.tasks > li.task .title {

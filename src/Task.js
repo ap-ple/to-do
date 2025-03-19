@@ -1,9 +1,12 @@
+import { format, formatDistance, parse } from "date-fns";
+
+const dateFormat = "yyyy-MM-dd";
 
 class Task {
    constructor(title, description, dueDate, priority) {
       this.title = title;
       this.description = description;
-      this.dueDate = dueDate;
+      this.setDueDate(dueDate);
       this.priority = priority;
    }
 
@@ -21,7 +24,18 @@ class Task {
    }
 
    setDueDate(newDueDate) {
-      this.dueDate = newDueDate;
+      if (newDueDate?.length > 0) {
+         this._dueDate = parse(newDueDate, dateFormat, new Date());
+      }
+      else {
+         this._dueDate = null;
+      }
+   }
+
+   get dueDate() {
+      if (this._dueDate) {
+         return format(this._dueDate, dateFormat);
+      }
    }
 
    dueStatus() {

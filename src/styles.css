@@ -214,7 +214,8 @@ body > main > ul.tasks {
    transition: opacity 200ms;
 }
 
-body > main > ul.tasks.hidden {
+body > main > ul.tasks.hidden,
+body > main > ul.tasks:empty {
    transition: opacity 10ms;
    opacity: 0%;
 }

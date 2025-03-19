@@ -282,6 +282,7 @@ body > main > ul.tasks > li.task .description {
 body > main > ul.tasks > li.task .description > div {
    text-overflow: ellipsis;
    overflow-x: hidden;
+   padding-right: 6px;
 }
 
 body > main > ul.tasks > li.task .description > div:empty {

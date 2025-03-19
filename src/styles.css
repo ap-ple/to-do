@@ -7,6 +7,8 @@
    --theme-border: black;
    --theme-text: black;
    --theme-task: white;
+   --theme-task-due-today: yellow;
+   --theme-task-due-overdue: red;
    --theme-task-medium-priority: rgb(255, 255, 200);
    --theme-task-high-priority: rgb(255, 200, 200);
    --theme-inactive-project-text: rgb(120, 120, 120);
@@ -265,8 +267,16 @@ body > main > ul.tasks > li.task[data-due$=days]::before {
    content: "Due in " attr(data-due);
 }
 
+body > main > ul.tasks > li.task[data-due=Today] {
+   border-color: var(--theme-task-due-today);
+}
+
 body > main > ul.tasks > li.task[data-due=Today]::before {
    content: "Due today";
+}
+
+body > main > ul.tasks > li.task[data-due=Overdue] {
+   border-color: var(--theme-task-due-overdue);
 }
 
 body > main > ul.tasks > li.task[data-due=Overdue]::before {

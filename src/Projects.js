@@ -1,3 +1,7 @@
+import Project from "./Project";
+import Task from "./Task";
+
+const storageID = "projects";
 
 class Projects {
    constructor() {
@@ -21,11 +25,30 @@ class Projects {
    }
 
    save() {
-      localStorage.setItem("projects", JSON.stringify(this.projects));
+      localStorage.setItem(storageID, JSON.stringify(this.projects));
    }
 
    load() {
-      
+      const loadedProjects = localStorage.getItem(storageID);
+
+      if (loadedProjects) {
+         this.projects = JSON.parse(loadedProjects);
+
+         const baseProject = new Project();
+         const baseTask = new Task();
+
+         for (const project of this.projects) {
+            Object.setPrototypeOf(project, baseProject);
+            project.save = () => this.save();
+
+            for (const task of project.tasks) {
+               Object.setPrototypeOf(task, baseTask);
+               task.save = () => this.save();
+            }
+         }
+      }
+
+      return loadedProjects;
    }
 }
 

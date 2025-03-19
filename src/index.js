@@ -6,7 +6,9 @@ import ProjectsRenderer from "./ProjectsRenderer";
 
 const projects = new Projects();
 
-projects.push(new Project("Untitled Project"));
+if (!projects.load()) {
+   projects.push(new Project("Untitled Project"));
+}
 
 const projectsElement = document.querySelector("body > main > nav > ul");
 const tasksElement = document.querySelector("body > main > ul.tasks");

@@ -60,6 +60,7 @@ class ProjectsRenderer {
          projectContainer.appendChild(projectDeleteButton);
 
          projectButtonTitle.innerText = project.title;
+         projectButtonTitle.title = project.title;
 
          projectButton.classList.add(this.projectClass);
 
@@ -87,7 +88,10 @@ class ProjectsRenderer {
             this.deselectSelectedProjectElement();
 
             if (this.selectedProjectElement === projectButton) {
-               const projectEditable = createEditable(projectButton, 1, value => project.rename(value));
+               const projectEditable = createEditable(projectButton, 1, value => {
+                  project.rename(value);
+                  projectButtonTitle.title = value;
+               });
                this.selectProjectElement(projectEditable);
             }
 

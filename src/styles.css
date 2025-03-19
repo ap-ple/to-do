@@ -389,7 +389,7 @@ body > main > ul.tasks > li.task > .actions > button.complete:focus-visible {
 body > main > ul.tasks > li.task > form.due-date {
    display: none;
    position: absolute;
-   top: var(--task-size);
+   translate: 0 calc(var(--task-size) / 3);
    gap: 12px;
    padding: 12px;
    border-radius: 12px;

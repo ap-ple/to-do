@@ -130,17 +130,7 @@ class TasksRenderer {
             setDateButton.addEventListener("click", () => {
                dateForm.classList.add("show");
                
-               datePicker.disabled = false;
-               dateSubmit.disabled = false;
-               
                datePicker.value = task.dueDate;
-
-               const hideDateForm = () => {
-                  dateForm.classList.remove("show");
-
-                  datePicker.disabled = true;
-                  dateSubmit.disabled = true;
-               }
             
                const handleDateFormSubmit = debounce(() => {            
                   const formData = new FormData(dateForm);
@@ -156,7 +146,7 @@ class TasksRenderer {
                   
                   taskCard.setAttribute("data-due", task.dueStatus());
 
-                  hideDateForm();
+                  dateForm.classList.remove("show");
                }, 0);
 
                dateForm.addEventListener("submit", event => {

@@ -2,6 +2,8 @@ import Task from "./Task";
 import createEditable from "./createEditable";
 import removeChildren from "./removeChildren";
 
+import calendarEdit from "./assets/calendar_edit.svg";
+
 const priorities = ["Urgent", "Important", "Normal"];
 
 class TasksRenderer {
@@ -53,11 +55,15 @@ class TasksRenderer {
             const taskDescription = document.createElement("div");
             const actions = document.createElement("div");
             const cyclePriorityButton = document.createElement("button");
+            const setDateImage = document.createElement("img");
+            const setDateButton = document.createElement("button");
             const completeTaskButton = document.createElement("button");
             
             taskTitleButton.appendChild(taskTitle);
             taskDescriptionButton.appendChild(taskDescription);
+            setDateButton.appendChild(setDateImage);
             actions.appendChild(cyclePriorityButton);
+            actions.appendChild(setDateButton);
             actions.appendChild(completeTaskButton);
    
             taskCard.appendChild(taskTitleButton);
@@ -98,6 +104,12 @@ class TasksRenderer {
                taskCard.setAttribute("data-priority", task.priority);
                // this.render(project);
             });
+
+            setDateImage.src = calendarEdit;
+
+            setDateButton.classList.add("set-date");
+            setDateButton.classList.add("circle");
+            setDateButton.title = "Set due date";
             
             completeTaskButton.innerText = "✓";
             completeTaskButton.classList.add("complete");

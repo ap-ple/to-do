@@ -6,21 +6,31 @@ class Task {
    constructor(title, description, dueDate, priority) {
       this.title = title;
       this.description = description;
-      this.setDueDate(dueDate);
+
+      if (dueDate) {
+         this._dueDate = parse(dueDate, dateFormat, new Date());
+      }
+      else {
+         this._dueDate = null;
+      }
+      
       this.priority = priority;
    }
 
    setTitle(newTitle) {
       this.title = newTitle;
+      this.save();
    }
 
    setDescription(newDescription) {
       this.description = newDescription;
+      this.save();
    }
 
    cyclePriority(priorities) {
       const currentPriorityIndex = priorities.indexOf(this.priority);
       this.priority = priorities.at(currentPriorityIndex - 1);
+      this.save();
    }
 
    setDueDate(newDueDate) {
@@ -30,6 +40,7 @@ class Task {
       else {
          this._dueDate = null;
       }
+      this.save();
    }
 
    get dueDate() {

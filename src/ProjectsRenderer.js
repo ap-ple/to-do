@@ -1,28 +1,25 @@
 import createEditable from "./createEditable"
 import removeChildren from "./removeChildren";
 import Project from "./Project";
+import TasksRenderer from "./TasksRenderer";
 
 class ProjectsRenderer {
-   constructor(projectsElement, tasksRenderer, addProjectButton) {
+   constructor(projectsElement, tasksElement, addProjectButton, projects) {
       this.projectsElement = projectsElement;
-      this.tasksRenderer = tasksRenderer;
-
-      this.projects = new Array();
-
+      this.tasksRenderer = new TasksRenderer(tasksElement);
+      
+      addProjectButton.addEventListener("click", () => {
+         this.projects.push(new Project("Untitled Project"));
+         this.render();
+      });
+      
       this.selectedProject = null;
       this.selectedProjectElement = null;
 
-      addProjectButton.addEventListener("click", () => {
-         this.addProject(new Project("Untitled Project"));
-      });
-
       this.selectedClass = "selected";
       this.projectClass = "project";
-   }
 
-   addProject(project) {
-      this.projects.push(project);
-      this.render();
+      this.projects = projects;
    }
 
    selectProject(project) {
@@ -42,14 +39,11 @@ class ProjectsRenderer {
    render() {
       removeChildren(this.projectsElement);
 
-      if (this.projects.length === 0) {
-         this.tasksRenderer.render();
-      }
-      else if (!this.selectedProject) {
-         this.selectProject(this.projects[0]);
+      if (!this.selectedProject) {
+         this.selectProject(this.projects.first());
       }
 
-      for (const project of this.projects) {
+      for (const project of this.projects.projects) {
          const projectContainer = document.createElement("li");
          const projectButton = document.createElement("button");
          const projectButtonTitle = document.createElement("div");
@@ -70,8 +64,7 @@ class ProjectsRenderer {
          projectDeleteButton.title = "Delete project";
 
          projectDeleteButton.addEventListener("click", () => {
-            const projectIndex = this.projects.indexOf(project);
-            this.projects.splice(projectIndex, 1);
+            this.projects.delete(project);
 
             if (this.selectedProject === project) {
                this.selectedProject = null;

@@ -259,28 +259,20 @@ body > main > ul.tasks > li.task:focus-within::before {
    opacity: 60%;
 }
 
-body > main > ul.tasks > li.task::before {
+body > main > ul.tasks > li.task[data-due]::before {
+   content: "Due " attr(data-due);
+}
+
+body > main > ul.tasks > li.task[data-due=""]::before {
    content: "No due date";
 }
 
-body > main > ul.tasks > li.task[data-due$=days]::before {
-   content: "Due in " attr(data-due);
-}
-
-body > main > ul.tasks > li.task[data-due=Today] {
+body > main > ul.tasks > li.task[data-due=today] {
    border-color: var(--theme-task-due-today);
 }
 
-body > main > ul.tasks > li.task[data-due=Today]::before {
-   content: "Due today";
-}
-
-body > main > ul.tasks > li.task[data-due=Overdue] {
+body > main > ul.tasks > li.task[data-due$=ago] {
    border-color: var(--theme-task-due-overdue);
-}
-
-body > main > ul.tasks > li.task[data-due=Overdue]::before {
-   content: "Overdue";
 }
 
 body > main > ul.tasks > li.task .title {

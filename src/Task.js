@@ -1,4 +1,4 @@
-import { format, formatDistance, parse } from "date-fns";
+import { format, formatDistance, isSameDay, parse } from "date-fns";
 
 const dateFormat = "yyyy-MM-dd";
 
@@ -42,7 +42,17 @@ class Task {
    }
 
    dueStatus() {
-      
+      if (this._dueDate) {
+         if (isSameDay(this._dueDate, new Date())) {
+            return "today";
+         }
+         else {
+            return formatDistance(this._dueDate, new Date(), { addSuffix: true });
+         }
+      }
+      else {
+         return "";
+      }
    }
 }
 

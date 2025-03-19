@@ -7,7 +7,7 @@
    --theme-border: black;
    --theme-text: black;
    --theme-task: white;
-   --theme-task-due-today: yellow;
+   --theme-task-due-today: rgb(200, 200, 0);
    --theme-task-due-overdue: red;
    --theme-task-medium-priority: rgb(255, 255, 200);
    --theme-task-high-priority: rgb(255, 200, 200);

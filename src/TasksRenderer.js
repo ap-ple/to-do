@@ -112,7 +112,6 @@ class TasksRenderer {
                task.cyclePriority(priorities);
                cyclePriorityButton.innerText = task.priority;
                taskCard.setAttribute("data-priority", task.priority);
-               // this.render(project);
             });
 
             dateForm.classList.add("due-date");

@@ -26,7 +26,7 @@ function createEditable(original, minLength, callback) {
          const key = pair[0];
          const value = pair[1];
 
-         if (key === "newValue") {
+         if (key === editableInput.name) {
             if (value.length >= minLength) {
                callback(value);
                textElement.innerText = value;

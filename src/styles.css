@@ -325,6 +325,7 @@ body > main > ul.tasks > li.task .description > div {
    text-overflow: ellipsis;
    overflow-x: hidden;
    padding-right: 6px;
+   scrollbar-width: thin;
 }
 
 body > main > ul.tasks > li.task .description > div:empty {

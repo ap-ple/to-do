@@ -24,7 +24,7 @@ class Task {
    }
 
    setDueDate(newDueDate) {
-      if (newDueDate?.length > 0) {
+      if (newDueDate) {
          this._dueDate = parse(newDueDate, dateFormat, new Date());
       }
       else {
@@ -35,6 +35,9 @@ class Task {
    get dueDate() {
       if (this._dueDate) {
          return format(this._dueDate, dateFormat);
+      }
+      else {
+         return null;
       }
    }
 

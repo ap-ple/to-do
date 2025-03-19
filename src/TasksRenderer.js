@@ -3,6 +3,7 @@ import createEditable from "./createEditable";
 import removeChildren from "./removeChildren";
 
 import calendarEdit from "./assets/calendar_edit.svg";
+import debounce from "lodash.debounce";
 
 const priorities = ["Urgent", "Important", "Normal"];
 
@@ -141,9 +142,7 @@ class TasksRenderer {
                   dateSubmit.disabled = true;
                }
             
-               dateForm.addEventListener("submit", event => {
-                  event.preventDefault();
-            
+               const handleDateFormSubmit = debounce(() => {            
                   const formData = new FormData(dateForm);
             
                   for (const pair of formData) {
@@ -158,11 +157,17 @@ class TasksRenderer {
                   taskCard.setAttribute("data-due", task.dueStatus());
 
                   hideDateForm();
+               }, 0);
+
+               dateForm.addEventListener("submit", event => {
+                  event.preventDefault();
+
+                  handleDateFormSubmit();
                });
             
                dateForm.addEventListener("focusout", event => {
                   if (event.relatedTarget !== datePicker && event.relatedTarget !== dateSubmit) {
-                     hideDateForm();
+                     handleDateFormSubmit();
                   }
                });
 

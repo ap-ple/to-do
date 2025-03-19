@@ -14,6 +14,11 @@ class Task {
    setDescription(newDescription) {
       this.description = newDescription;
    }
+
+   cyclePriority(priorities) {
+      const currentPriorityIndex = priorities.indexOf(this.priority);
+      this.priority = priorities.at(currentPriorityIndex - 1);
+   }
 }
 
 export default Task;

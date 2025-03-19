@@ -7,6 +7,8 @@
    --theme-border: black;
    --theme-text: black;
    --theme-task: white;
+   --theme-task-medium-priority: rgb(255, 255, 200);
+   --theme-task-high-priority: rgb(255, 200, 200);
    --theme-inactive-project-text: rgb(120, 120, 120);
    --theme-selected-project-text: white;
    --theme-selected-project-background: rgb(50, 50, 200);
@@ -229,6 +231,15 @@ body > main > ul.tasks > li {
 body > main > ul.tasks > li.task {
    flex-flow: column;
    gap: 12px;
+   transition: background-color 150ms;
+}
+
+body > main > ul.tasks > li.task[data-priority=Important] {
+   background: var(--theme-task-medium-priority);
+}
+
+body > main > ul.tasks > li.task[data-priority=Urgent] {
+   background: var(--theme-task-high-priority);
 }
 
 body > main > ul.tasks > li.task .title {
@@ -313,6 +324,10 @@ body > main > ul.tasks > li.task > .actions > button {
    opacity: 0;
    height: 36px;
    transition: opacity 150ms, background-color 150ms, color 150ms;
+}
+
+body > main > ul.tasks > li.task > .actions > button[title*=priority] {
+   outline-offset: 4px;
 }
 
 body > main > ul.tasks > li.task:hover > .actions > button,

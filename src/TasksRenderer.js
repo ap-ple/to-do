@@ -2,6 +2,8 @@ import Task from "./Task";
 import createEditable from "./createEditable";
 import removeChildren from "./removeChildren";
 
+const priorities = ["Urgent", "Important", "Normal"];
+
 class TasksRenderer {
    constructor(tasksElement) {
       this.tasksElement = tasksElement;
@@ -30,7 +32,7 @@ class TasksRenderer {
          const addTaskButton = document.createElement("button");
 
          addTaskButton.addEventListener("click", () => {
-            project.addTask(new Task("New Task", "Enter description here...", null, "Low"));
+            project.addTask(new Task("New Task", "Enter description here...", null, priorities.at(-1)));
          });
 
          this.addTaskCard.appendChild(addTaskButton);
@@ -49,10 +51,12 @@ class TasksRenderer {
          const taskDescriptionButton = document.createElement("button");
          const taskDescription = document.createElement("div");
          const actions = document.createElement("div");
+         const cyclePriorityButton = document.createElement("button");
          const completeTaskButton = document.createElement("button");
          
          taskTitleButton.appendChild(taskTitle);
          taskDescriptionButton.appendChild(taskDescription);
+         actions.appendChild(cyclePriorityButton);
          actions.appendChild(completeTaskButton);
 
          taskCard.appendChild(taskTitleButton);
@@ -78,6 +82,17 @@ class TasksRenderer {
          taskDescription.innerText = task.description;
 
          actions.classList.add("actions");
+
+         cyclePriorityButton.innerText = task.priority;
+         taskCard.setAttribute("data-priority", task.priority);
+         cyclePriorityButton.title = "Cycle priority";
+
+         cyclePriorityButton.addEventListener("click", () => {
+            task.cyclePriority(priorities);
+            cyclePriorityButton.innerText = task.priority;
+            taskCard.setAttribute("data-priority", task.priority);
+            // this.render(project);
+         });
          
          completeTaskButton.innerText = "✓";
          completeTaskButton.classList.add("complete");

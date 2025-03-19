@@ -395,7 +395,7 @@ body > main > ul.tasks > li.task > .actions > button.complete:focus-visible {
 }
 
 body > main > ul.tasks > li.task > form.due-date {
-   display: flex;
+   display: none;
    position: absolute;
    top: var(--task-size);
    gap: 12px;
@@ -403,12 +403,10 @@ body > main > ul.tasks > li.task > form.due-date {
    border-radius: 12px;
    background: var(--theme-task);
    border: var(--theme-border) solid 1px;
-   opacity: 0;
-   transition: opacity 150ms;
 }
 
 body > main > ul.tasks > li.task > form.due-date.show {
-   opacity: 100%;
+   display: flex;
 }
 
 body > main > ul.tasks > li.task > form.due-date > button {

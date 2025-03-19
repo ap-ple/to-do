@@ -127,6 +127,8 @@ class TasksRenderer {
             setDateButton.title = "Set due date";
 
             setDateButton.addEventListener("click", () => {
+               dateForm.classList.add("show");
+               
                datePicker.disabled = false;
                dateSubmit.disabled = false;
                
@@ -167,8 +169,6 @@ class TasksRenderer {
                taskCard.appendChild(dateForm);
             
                datePicker.select();
-
-               dateForm.classList.add("show");
             });
             
             completeTaskButton.innerText = "✓";

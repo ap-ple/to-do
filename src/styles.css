@@ -394,6 +394,27 @@ body > main > ul.tasks > li.task > .actions > button.complete:focus-visible {
    background: var(--theme-complete);
 }
 
+body > main > ul.tasks > li.task > form.due-date {
+   display: flex;
+   position: absolute;
+   top: var(--task-size);
+   gap: 12px;
+   padding: 12px;
+   border-radius: 12px;
+   background: var(--theme-task);
+   border: var(--theme-border) solid 1px;
+   opacity: 0;
+   transition: opacity 150ms;
+}
+
+body > main > ul.tasks > li.task > form.due-date.show {
+   opacity: 100%;
+}
+
+body > main > ul.tasks > li.task > form.due-date > button {
+   outline-offset: 4px;
+}
+
 body > main > ul.tasks > li.add-task {
    border: dashed var(--theme-border) 1px;
    padding: 0;

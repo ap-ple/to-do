@@ -58,6 +58,9 @@ class TasksRenderer {
             const setDateImage = document.createElement("img");
             const setDateButton = document.createElement("button");
             const completeTaskButton = document.createElement("button");
+            const dateForm = document.createElement("form");
+            const datePicker = document.createElement("input");
+            const dateSubmit = document.createElement("button");
             
             taskTitleButton.appendChild(taskTitle);
             taskDescriptionButton.appendChild(taskDescription);
@@ -65,12 +68,17 @@ class TasksRenderer {
             actions.appendChild(cyclePriorityButton);
             actions.appendChild(setDateButton);
             actions.appendChild(completeTaskButton);
+            dateForm.appendChild(datePicker);
+            dateForm.appendChild(dateSubmit);
    
             taskCard.appendChild(taskTitleButton);
             taskCard.appendChild(taskDescriptionButton);
             taskCard.appendChild(actions);
+            taskCard.appendChild(dateForm);
    
             taskCard.classList.add(this.taskClass);
+
+            taskCard.setAttribute("data-due", task.dueStatus());
             
             taskTitleButton.classList.add(this.taskTitleClass);
    
@@ -105,11 +113,63 @@ class TasksRenderer {
                // this.render(project);
             });
 
+            dateForm.classList.add("due-date");
+
+            datePicker.type = "date";
+            datePicker.name = "newDueDate";
+
+            dateSubmit.innerText = "Set";
+
             setDateImage.src = calendarEdit;
 
             setDateButton.classList.add("set-date");
             setDateButton.classList.add("circle");
             setDateButton.title = "Set due date";
+
+            setDateButton.addEventListener("click", () => {
+               datePicker.disabled = false;
+               dateSubmit.disabled = false;
+               
+               datePicker.value = task.dueDate;
+
+               const hideDateForm = () => {
+                  dateForm.classList.remove("show");
+
+                  datePicker.disabled = true;
+                  dateSubmit.disabled = true;
+               }
+            
+               dateForm.addEventListener("submit", event => {
+                  event.preventDefault();
+            
+                  const formData = new FormData(dateForm);
+            
+                  for (const pair of formData) {
+                     const key = pair[0];
+                     const value = pair[1];
+            
+                     if (key === datePicker.name) {
+                        task.setDueDate(value);
+                     }
+                  }
+                  
+                  taskCard.setAttribute("data-due", task.dueStatus());
+
+                  hideDateForm();
+               });
+            
+               dateForm.addEventListener("focusout", event => {
+                  if (event.relatedTarget !== datePicker && event.relatedTarget !== dateSubmit) {
+                     hideDateForm();
+                  }
+               });
+
+               taskCard.appendChild(dateForm);
+            
+               datePicker.select();
+
+               dateForm.classList.add("show");
+            });
             
             completeTaskButton.innerText = "✓";
             completeTaskButton.classList.add("complete");

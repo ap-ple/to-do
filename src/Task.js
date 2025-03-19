@@ -19,6 +19,14 @@ class Task {
       const currentPriorityIndex = priorities.indexOf(this.priority);
       this.priority = priorities.at(currentPriorityIndex - 1);
    }
+
+   setDueDate(newDueDate) {
+      this.dueDate = newDueDate;
+   }
+
+   dueStatus() {
+      
+   }
 }
 
 export default Task;

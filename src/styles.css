@@ -245,7 +245,7 @@ body > main > ul.tasks > li.task[data-priority=Urgent] {
 }
 
 body > main > ul.tasks > li.task::before {
-   margin: calc(var(--task-padding) / -4) 0;
+   margin: calc(var(--task-padding) / -2) 0 calc(var(--task-padding) / -4);
    text-align: right;
    font-size: 0.5rem;
    opacity: 0;

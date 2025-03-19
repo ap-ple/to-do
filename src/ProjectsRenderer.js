@@ -13,7 +13,7 @@ class ProjectsRenderer {
       this.selectedProjectElement = null;
 
       addProjectButton.addEventListener("click", () => {
-         this.addProject(new Project("Untitled Project", tasksRenderer));
+         this.addProject(new Project("Untitled Project"));
       });
 
       this.selectedClass = "selected";
@@ -27,7 +27,7 @@ class ProjectsRenderer {
 
    selectProject(project) {
       this.selectedProject = project;
-      this.selectedProject.render();
+      this.tasksRenderer.render(this.selectedProject);
    }
 
    selectProjectElement(projectElement) {

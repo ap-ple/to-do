@@ -36,6 +36,7 @@ class TasksRenderer {
 
          addTaskButton.addEventListener("click", () => {
             project.addTask(new Task("New Task", "Enter description here...", null, priorities.at(-1)));
+            this.render(project);
          });
 
          this.addTaskCard.appendChild(addTaskButton);
@@ -173,6 +174,7 @@ class TasksRenderer {
             
             completeTaskButton.addEventListener("click", () => {
                project.removeTask(task);
+               this.render(project);
             });
             
             this.tasksElement.insertBefore(taskCard, this.addTaskCard);

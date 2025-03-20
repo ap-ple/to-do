@@ -1,7 +1,7 @@
 import Project from "./Project";
 import Task from "./Task";
 
-const storageID = "projects";
+const storageKey = "projects";
 
 class Projects {
    constructor() {
@@ -25,11 +25,11 @@ class Projects {
    }
 
    save() {
-      localStorage.setItem(storageID, JSON.stringify(this.projects));
+      localStorage.setItem(storageKey, JSON.stringify(this.projects));
    }
 
    load() {
-      const loadedProjects = localStorage.getItem(storageID);
+      const loadedProjects = localStorage.getItem(storageKey);
 
       if (loadedProjects) {
          this.projects = JSON.parse(loadedProjects);

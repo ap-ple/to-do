@@ -79,17 +79,22 @@ class ProjectsRenderer {
 
          projectButton.addEventListener("click", () => {
             this.deselectSelectedProjectElement();
-
-            if (this.selectedProjectElement === projectButton) {
-               const projectEditable = createEditable(projectButton, 1, value => {
-                  project.rename(value);
-                  projectButtonTitle.title = value;
-               });
-               this.selectProjectElement(projectEditable);
-            }
-
             this.selectProject(project);
             this.selectProjectElement(projectButton);
+
+            if (this.selectedProjectElement === projectButton) {
+               const projectEditable = createEditable(projectButton, newValue => {
+                  if (newValue.length > 0) {
+                     project.rename(newValue);
+                     projectButtonTitle.title = newValue;
+                     projectButtonTitle.innerText = newValue;
+                  }
+
+                  this.selectProjectElement(projectButton);
+               });
+               
+               this.selectProjectElement(projectEditable);
+            }
          });
 
          this.projectsElement.appendChild(projectContainer);

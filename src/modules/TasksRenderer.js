@@ -83,25 +83,31 @@ class TasksRenderer {
 
             taskCard.setAttribute("data-due", task.dueStatus());
             
+            taskTitle.innerText = task.title;
+            taskTitle.title = task.title;
+
             taskTitleButton.classList.add(this.taskTitleClass);
    
             taskTitleButton.addEventListener("click", () => {
-               createEditable(taskTitleButton, 1, value => {
-                  task.setTitle(value)
-                  taskTitle.title = task.title;
+               createEditable(taskTitleButton, newValue => {
+                  if (newValue.length > 0) {
+                     task.setTitle(newValue)
+                     taskTitle.title = task.title;
+                     taskTitle.innerText = newValue;
+                  }
                });
             });
             
-            taskTitle.innerText = task.title;
-            taskTitle.title = task.title;
-   
+            taskDescription.innerText = task.description;
+
             taskDescriptionButton.classList.add(this.taskDescriptionClass);
    
             taskDescriptionButton.addEventListener("click", () => {
-               createEditable(taskDescriptionButton, 0, value => task.setDescription(value));
+               createEditable(taskDescriptionButton, newValue => {
+                  task.setDescription(newValue)
+                  taskDescription.innerText = newValue;
+               });
             });
-   
-            taskDescription.innerText = task.description;
    
             actions.classList.add("actions");
    

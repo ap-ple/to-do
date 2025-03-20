@@ -1,6 +1,6 @@
 import debounce from "lodash.debounce";
 
-function createEditable(original, minLength, callback) {
+function createEditable(original, callback) {
    const editableForm = document.createElement("form");
    const editableInput = document.createElement("input");
 
@@ -23,10 +23,7 @@ function createEditable(original, minLength, callback) {
       const formData = new FormData(editableForm);
       const newValue = formData.get(editableInput.name);
 
-      if (newValue.length >= minLength) {
-         callback(newValue);
-         textElement.innerText = newValue;
-      }
+      callback(newValue);
 
       if (parent.contains(editableForm)) {
          parent.insertBefore(original, editableForm)

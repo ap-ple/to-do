@@ -4,7 +4,7 @@ import removeChildren from "./removeChildren";
 
 import debounce from "lodash.debounce";
 
-import calendarEdit from "./assets/calendar_edit.svg";
+import calendarEdit from "../assets/calendar_edit.svg";
 
 const priorities = ["Urgent", "Important", "Normal"];
 

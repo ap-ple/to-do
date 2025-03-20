@@ -1,8 +1,8 @@
 import "./styles.css";
 
-import Project from "./Project";
-import Projects from "./Projects";
-import ProjectsRenderer from "./ProjectsRenderer";
+import Project from "./modules/Project";
+import Projects from "./modules/Projects";
+import ProjectsRenderer from "./modules/ProjectsRenderer";
 
 const projects = new Projects();
 

@@ -2,8 +2,9 @@ import Task from "./Task";
 import createEditable from "./createEditable";
 import removeChildren from "./removeChildren";
 
-import calendarEdit from "./assets/calendar_edit.svg";
 import debounce from "lodash.debounce";
+
+import calendarEdit from "./assets/calendar_edit.svg";
 
 const priorities = ["Urgent", "Important", "Normal"];
 

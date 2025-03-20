@@ -135,15 +135,9 @@ class TasksRenderer {
             
                const handleDateFormSubmit = debounce(() => {            
                   const formData = new FormData(dateForm);
-            
-                  for (const pair of formData) {
-                     const key = pair[0];
-                     const value = pair[1];
-            
-                     if (key === datePicker.name) {
-                        task.setDueDate(value);
-                     }
-                  }
+                  const newDueDate = formData.get(datePicker.name);
+
+                  task.setDueDate(newDueDate);
                   
                   taskCard.setAttribute("data-due", task.dueStatus());
 

@@ -21,18 +21,13 @@ function createEditable(original, minLength, callback) {
 
    const handleEditableFormSubmit = debounce(() => {
       const formData = new FormData(editableForm);
+      const newValue = formData.get(editableInput.name);
 
-      for (const pair of formData) {
-         const key = pair[0];
-         const value = pair[1];
-
-         if (key === editableInput.name) {
-            if (value.length >= minLength) {
-               callback(value);
-               textElement.innerText = value;
-            }
-         }
+      if (newValue.length >= minLength) {
+         callback(newValue);
+         textElement.innerText = newValue;
       }
+
       if (parent.contains(editableForm)) {
          parent.insertBefore(original, editableForm)
          parent.removeChild(editableForm);

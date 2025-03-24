@@ -26,8 +26,7 @@ function createEditable(original, callback) {
       callback(newValue);
 
       if (parent.contains(editableForm)) {
-         parent.insertBefore(original, editableForm)
-         parent.removeChild(editableForm);
+         parent.replaceChild(original, editableForm);
       }
    }, 0);
 
@@ -39,8 +38,7 @@ function createEditable(original, callback) {
 
    editableInput.addEventListener("focusout", handleEditableFormSubmit);
 
-   parent.insertBefore(editableForm, original)
-   parent.removeChild(original);
+   parent.replaceChild(editableForm, original);
 
    editableInput.select();
 

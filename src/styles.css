@@ -395,10 +395,14 @@ body > main > ul.tasks > li.task > form.due-date {
    border-radius: 12px;
    background: var(--theme-task);
    border: var(--theme-border) solid 1px;
+   opacity: 0;
+   transition: display 150ms, opacity 150ms;
+   transition-behavior: allow-discrete;
 }
 
 body > main > ul.tasks > li.task > form.due-date.show {
    display: flex;
+   opacity: 100%;
 }
 
 body > main > ul.tasks > li.task > form.due-date > button {
